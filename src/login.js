@@ -1,7 +1,11 @@
 import React, { useState } from 'react';
 import { postData } from './services/apiService';
+import Swal from 'sweetalert2';
+import { useNavigate } from 'react-router-dom'; 
 
 const Login = () => {
+    const navigate = useNavigate(); 
+
   const [formData, setFormData] = useState({ email: '', password: '' });
   const [loading, setLoading] = useState(false);
   const [message, setMessage] = useState('');
@@ -18,10 +22,18 @@ const Login = () => {
     console.log('Enviando datos:', formData); // Verifica los datos antes de enviarlos
 
     try {
-      const response = await postData('/auth/login', formData); // Asegúrate de que la ruta sea correcta
+      const response = await postData('/auth/login', formData);
+      navigate('/'); 
       setMessage('Datos enviados con éxito: ' + JSON.stringify(response));
     } catch (error) {
       console.log(error);
+
+      Swal.fire({
+        title: '¡Alerta!',
+        text: error.response.data.error,
+        icon: 'error', // Tipo de alerta (success, error, info, warning)
+        confirmButtonText: 'Aceptar', // Texto del botón
+      });
       setMessage('Error al enviar datos.');
     } finally {
       setLoading(false);
