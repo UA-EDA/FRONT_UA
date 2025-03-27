@@ -83,7 +83,7 @@ const navigate = useNavigate();
           </button>
 
           <div className="text-center mt-3">
-            <a href="#" className="text-primary text-decoration-none">
+            <a href="/auth/register" className="text-primary text-decoration-none">
               No tienes cuenta, crea una
             </a>
           </div>
