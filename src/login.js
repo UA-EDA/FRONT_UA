@@ -42,15 +42,16 @@ const navigate = useNavigate();
 
   return (
     <form onSubmit={handleSubmit}>
-      <div className="d-flex justify-content-center align-items-center vh-100 bg-dark text-light">
-        <div className="p-4 rounded-3 shadow-lg" style={{ backgroundColor: '#333', width: '350px' }}>
-          <h2 className="text-center fw-bold mb-3">Login</h2>
+      <div className="d-flex justify-content-center align-items-center vh-100" style={{ backgroundColor: "#121212" }}>
+      <div className="container p-4" style={{ backgroundColor: "#2a2a2a", borderRadius: "10px", boxShadow: "0 0 10px rgba(0, 0, 0, 0.5)", width: "350px" }}>
+        <h2 className="text-center text-white fw-bold mb-3">Login</h2>
+
 
           <div className="mb-2">
-            <label className="form-label">Email</label>
+            <label className="form-label text-white">Email</label>
             <input
               type="email"
-              className="form-control bg-dark text-light border-0"
+              className="form-control text-light border-0"
               placeholder="example@example.com..."
               name="email"
               value={formData.email}
@@ -60,10 +61,10 @@ const navigate = useNavigate();
           </div>
 
           <div className="mb-2">
-            <label className="form-label">Contraseña</label>
+            <label className="form-label text-white">Contraseña</label>
             <input
               type="password"
-              className="form-control bg-dark text-light border-0"
+              className="form-control text-light border-0"
               placeholder="Contraseña..."
               name="password"
               value={formData.password}
@@ -78,7 +79,7 @@ const navigate = useNavigate();
             </a>
           </div>
 
-          <button type="submit" disabled={loading} className="btn btn-success w-100 fw-bold">
+          <button type="submit" disabled={loading} className="btn btn-primary w-100">
             {loading ? 'Iniciando sesión...' : 'Iniciar sesión'}
           </button>
 
