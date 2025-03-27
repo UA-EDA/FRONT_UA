@@ -2,13 +2,13 @@
 import React, { useState } from "react";
 import { postData } from './services/apiService';
 import Swal from 'sweetalert2';
-import { useNavigate } from 'react-router-dom'; 
+import { useNavigate } from 'react-router-dom';
 
 
 
 
 const Register = () => {
-    const navigate = useNavigate(); 
+    const navigate = useNavigate();
     const [nombre_completo, setNombre] = useState("");
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
@@ -17,35 +17,35 @@ const Register = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault(); // Evitar la recarga de la página
-      
-    
-        console.log('Enviando datos:', { nombre_completo, email, password, foto }); // Verifica los datos antes de enviarlos
-    
-        try {
-          const response = await postData('/auth/register', { nombre_completo, email, password, foto });
-          Swal.fire({
-            title: '¡Alerta!',
-            text: 'Usuario Creado correctamente',
-            icon: 'success', // Tipo de alerta (success, error, info, warning)
-            confirmButtonText: 'Aceptar', // Texto del botón
-          });
 
-          navigate('/auth/login'); 
-         // setMessage('Datos enviados con éxito: ' + JSON.stringify(response));
+
+        console.log('Enviando datos:', { nombre_completo, email, password, foto }); // Verifica los datos antes de enviarlos
+
+        try {
+            const response = await postData('/auth/register', { nombre_completo, email, password, foto });
+            Swal.fire({
+                title: '¡Alerta!',
+                text: 'Usuario Creado correctamente',
+                icon: 'success', // Tipo de alerta (success, error, info, warning)
+                confirmButtonText: 'Aceptar', // Texto del botón
+            });
+
+            navigate('/auth/login');
+            // setMessage('Datos enviados con éxito: ' + JSON.stringify(response));
         } catch (error) {
-          console.log(error);
-    
-          Swal.fire({
-            title: '¡Alerta!',
-            text: error.response.data.error,
-            icon: 'error', // Tipo de alerta (success, error, info, warning)
-            confirmButtonText: 'Aceptar', // Texto del botón
-          });
-         // setMessage('Error al enviar datos.');
+            console.log(error);
+
+            Swal.fire({
+                title: '¡Alerta!',
+                text: error.response.data.error,
+                icon: 'error', // Tipo de alerta (success, error, info, warning)
+                confirmButtonText: 'Aceptar', // Texto del botón
+            });
+            // setMessage('Error al enviar datos.');
         } finally {
-         // setLoading(false);
+            // setLoading(false);
         }
-      };
+    };
 
 
     const changeImage = (e) => {
@@ -81,8 +81,10 @@ const Register = () => {
                     <div className="mb-3">
                         <label className="form-label text-white">Foto de perfil</label>
                         <input type="file" className="form-control" accept="image/*" onChange={changeImage} />
+                    </div>
 
-                        {foto && <img src={foto} alt="Vista previa" style={{ width: '100px', height: '100px' }} />}
+                    <div className="mb-3 justify-content">
+                        {foto && <img src={foto} alt="Vista previa" style={{ width: '300px', height: '150px' }} />}
                     </div>
 
 
