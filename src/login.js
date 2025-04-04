@@ -49,9 +49,9 @@ const navigate = useNavigate();
 
           <div className="mb-2">
             <label className="form-label text-white">Email</label>
-            <input
+            <input 
               type="email"
-              className="form-control text-light border-0"
+              className="form-control text-black border-0"
               placeholder="example@example.com..."
               name="email"
               value={formData.email}
@@ -64,7 +64,7 @@ const navigate = useNavigate();
             <label className="form-label text-white">Contraseña</label>
             <input
               type="password"
-              className="form-control text-light border-0"
+              className="form-control text-black border-0"
               placeholder="Contraseña..."
               name="password"
               value={formData.password}
