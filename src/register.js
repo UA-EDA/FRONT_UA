@@ -12,12 +12,21 @@ const Register = () => {
     const [nombre_completo, setNombre] = useState("");
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
+    const [confirmPassword, setConfirmPassword] = useState("");
     const [foto, setFoto] = useState("");
+    const [error, setError] = useState(""); // Error de validación
 
 
     const handleSubmit = async (e) => {
         e.preventDefault(); // Evitar la recarga de la página
 
+
+        if (password !== confirmPassword) {
+            setError("Las contraseñas no coinciden");
+            return;
+        }
+
+        setError(""); // Limpiar error si todo va bien
 
         console.log('Enviando datos:', { nombre_completo, email, password, foto }); // Verifica los datos antes de enviarlos
 
@@ -79,8 +88,13 @@ const Register = () => {
                         <input type="password" className="form-control" placeholder="Tu contraseña" required value={password} onChange={(e) => setPassword(e.target.value)} />
                     </div>
                     <div className="mb-3">
+                        <label className="form-label text-white">Confirmar Contraseña</label>
+                        <input type="password" className="form-control" placeholder="Repite la contraseña" required value={confirmPassword} onChange={(e) => setConfirmPassword(e.target.value)} />
+                        {error && <div className="text-danger mt-1">{error}</div>}
+                    </div>
+                    <div className="mb-3">
                         <label className="form-label text-white">Foto de perfil</label>
-                        <input type="file" className="form-control" accept="image/*" onChange={changeImage} />
+                        <input type="file" className="form-control" accept="image/*" onChange={changeImage} required/>
                     </div>
 
                     <div className="mb-3 justify-content">
