@@ -89,6 +89,12 @@ const navigate = useNavigate();
               No tienes cuenta, crea una
             </a>
           </div>
+
+          <div className="text-center mt-3">
+            <a href="/" className="text-primary text-decoration-none">
+              ¿Entrar sin iniciar sesión?
+            </a>
+          </div>
       </div>
     
     </form>

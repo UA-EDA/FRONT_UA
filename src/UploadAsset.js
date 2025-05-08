@@ -97,14 +97,14 @@ const UploadAsset = () => {
                 <h2 className="text-center text-white">Sube tu Asset</h2>
                 <div className="mb-3">
                     <label className="form-label text-white">Nombre del asset</label>
-                    <input type="text" className="form-control" placeholder="Tu nombre" required value={nombre} onChange={(e) => setNombre(e.target.value)} />
+                    <input type="text" className="form-control" placeholder="Nombre del asset..." required value={nombre} onChange={(e) => setNombre(e.target.value)} />
                 </div>
                 <div className="mb-3">
                     <label className="form-label text-white">Descripcion del asset</label>
                     <input type="text" className="form-control" placeholder="Descripción..." required value={descripcion} onChange={(e) => setDescripcion(e.target.value)} />
                 </div>
                 <div className="mb-3">
-                    <label className="form-label text-white">Tipo</label>
+                    <label className="form-label text-white">Categorias</label>
                     <select id="tipo" name="tipo" className="form-control" required value={tipo} onChange={(e) => setTipo(e.target.value)}>
                         <option value="" disabled hidden>Seleccionar un tipo</option>
                         <option value="3D">3D</option>
@@ -116,7 +116,7 @@ const UploadAsset = () => {
                     </select>
                 </div>
                 <div className="mb-3">
-                    <label className="form-label text-white">Categorias</label>
+                    <label className="form-label text-white">Etiquetas</label>
                     <input type="text" className="form-control" placeholder="Star Wars, Videojuegos,..." required value={categories} onChange={(e) => setCategories(e.target.value)} />
                     {error && <div className="text-danger mt-1">{error}</div>}
                 </div>
