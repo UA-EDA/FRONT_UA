@@ -42,8 +42,8 @@ const navigate = useNavigate();
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <div className="d-flex justify-content-center align-items-center vh-100" style={{ backgroundColor: "#121212" }}>
+    <form onSubmit={handleSubmit} className="d-flex justify-content-center align-items-center vh-100" >
+    
       <div className="container p-4" style={{ backgroundColor: "#2a2a2a", borderRadius: "10px", boxShadow: "0 0 10px rgba(0, 0, 0, 0.5)", width: "350px" }}>
         <h2 className="text-center text-white fw-bold mb-3">Login</h2>
 
@@ -89,8 +89,8 @@ const navigate = useNavigate();
               No tienes cuenta, crea una
             </a>
           </div>
-        </div>
       </div>
+    
     </form>
   );
 };
