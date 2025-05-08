@@ -91,10 +91,19 @@ const AssetView = () => {
                 <div className="card av-header-card">
                     <h2>{asset.nombre.toUpperCase()}</h2>
                     <p>Por {asset.autor?.nombre_completo}</p>
-                    <div className="av-tags">
-                        {Array.isArray(asset.categorias) && asset.categorias.map(cat => (
-                            <span key={cat} className="tag">{cat}</span>
-                        ))}
+                    <div className="av-category-row">
+                        <p>CATEGORÍA</p>
+                        <div className="av-tags">
+                            <span key={asset.tipo} className="cat">{asset.tipo}</span>
+                        </div>
+                    </div>
+                    <div className="av-category-row">
+                        <p>ETIQUETAS</p>
+                        <div className="av-tags">
+                            {Array.isArray(asset.categorias) && asset.categorias.map(cat => (
+                                <span key={cat} className="tag">{cat}</span>
+                            ))}
+                        </div>
                     </div>
                     <div className="av-rating">{"★".repeat(Math.round(asset.valoracion || 0))}</div>
                 </div>
@@ -104,13 +113,11 @@ const AssetView = () => {
                     <ul>
                         <li><strong>Fecha de publicación:</strong> {new Date(asset.fecha_alta).toLocaleDateString()}</li>
                         <li><strong>Versión de software:</strong> {asset.version_software && asset.version_software !== "" ? (Array.isArray(asset.version_software) ? asset.version_software.join(', ') : asset.version_software) : "1.0.0"}</li>
-                        <li><strong>Motor de renderizado:</strong> {asset.motor_render}</li>
                         {asset.numero_modelos && asset.numero_modelos !== "" && (
                             <li><strong>Número de modelos:</strong> {asset.numero_modelos}</li>
                         )}
-                        {asset.numero_modelos && asset.numero_modelos !== "" && (
-                            <li><strong>Tamaño del asset:</strong> {asset.tamano}</li>
-                        )}
+                        <li><strong>Likes:</strong> {asset.likes || 0}</li>
+                        <li><strong>Número de descargas:</strong> {asset.num_descargas || 0}</li>
                     </ul>
                 </div>
 

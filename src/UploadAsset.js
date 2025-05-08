@@ -14,6 +14,7 @@ const UploadAsset = () => {
     const [tipo, setTipo] = useState("");
     const [categories, setCategories] = useState("");
     const [asset, setFoto] = useState("");
+    const [portada, setPortada] = useState("");
 
     const [error, setError] = useState(""); // Error de validación
 
@@ -22,17 +23,17 @@ const UploadAsset = () => {
         e.preventDefault(); // Evitar la recarga de la página
 
 
-     
+
         setError(""); // Limpiar error si todo va bien
 
-       // console.log('Enviando datos:', { nombre_completo, email, password, foto }); // Verifica los datos antes de enviarlos
+        // console.log('Enviando datos:', { nombre_completo, email, password, foto }); // Verifica los datos antes de enviarlos
 
         let categorias = categories.split(',');
 
-        categorias = categorias.map(x=> x.trim());
+        categorias = categorias.map(x => x.trim());
 
         try {
-            const response = await postData('/asset/subir', { nombre, descripcion, tipo, asset, categorias });
+            const response = await postData('/asset/subir', { nombre, descripcion, tipo, asset, categorias, portada });
             Swal.fire({
                 title: '¡Alerta!',
                 text: 'Asset Creado correctamente',
@@ -73,51 +74,73 @@ const UploadAsset = () => {
         };
     };
 
+
+    const changePortada = (e) => {
+        const file = e.target.files[0]; // Obtén el primer archivo seleccionado
+        if (!file) return;
+
+        const reader = new FileReader(); // Crea un FileReader
+        reader.readAsDataURL(file); // Lee el archivo como una URL de datos
+
+        // Cuando la carga del archivo termina, actualiza el estado
+        reader.onloadend = () => {
+            setPortada(reader.result); // Actualiza el estado con la URL de la imagen
+        };
+    };
+
     return (
-        <div className="d-flex justify-content-center align-items-center vh-100" style={{ backgroundColor: "#121212" }}>
+
+
+
+        <form onSubmit={handleSubmit} className="d-flex justify-content-center align-items-center vh-100">
             <div className="container p-4" style={{ backgroundColor: "#2a2a2a", borderRadius: "10px", boxShadow: "0 0 10px rgba(0, 0, 0, 0.5)", width: "350px" }}>
                 <h2 className="text-center text-white">Sube tu Asset</h2>
-                <form onSubmit={handleSubmit}>
-                    <div className="mb-3">
-                        <label className="form-label text-white">Nombre del asset</label>
-                        <input type="text" className="form-control" placeholder="Tu nombre" required value={nombre} onChange={(e) => setNombre(e.target.value)} />
-                    </div>
-                    <div className="mb-3">
-                        <label className="form-label text-white">Descripcion del asset</label>
-                        <input type="text" className="form-control" placeholder="Descripción..." required value={descripcion} onChange={(e) => setDescripcion(e.target.value)} />
-                    </div>
-                    <div className="mb-3">
-                        <label className="form-label text-white">Tipo</label>
-                        <select id="tipo" name="tipo" className="form-control" required value={tipo} onChange={(e) => setTipo(e.target.value)}>
-                            <option value="" disabled hidden>Seleccionar un tipo</option>
-                            <option value="3D">3D</option>
-                            <option value="2D">2D</option>
-                            <option value="AUDIO">AUDIO</option>
-                            <option value="VIDEO">VIDEO</option>
-                            <option value="SCRIPT">SCRIPT</option>
-                            <option value="IMAGE">IMAGE</option>
-                        </select>
-                    </div>
-                    <div className="mb-3">
-                        <label className="form-label text-white">Categorias</label>
-                        <input type="text" className="form-control" placeholder="Star Wars, Videojuegos,..." required value={categories} onChange={(e) => setCategories(e.target.value)} />
-                        {error && <div className="text-danger mt-1">{error}</div>}
-                    </div>
-                    <div className="mb-3">
-                        <label className="form-label text-white">Archivo</label>
-                        <input type="file" className="form-control" onChange={changeImage} required multiple/>
-                    </div>
+                <div className="mb-3">
+                    <label className="form-label text-white">Nombre del asset</label>
+                    <input type="text" className="form-control" placeholder="Tu nombre" required value={nombre} onChange={(e) => setNombre(e.target.value)} />
+                </div>
+                <div className="mb-3">
+                    <label className="form-label text-white">Descripcion del asset</label>
+                    <input type="text" className="form-control" placeholder="Descripción..." required value={descripcion} onChange={(e) => setDescripcion(e.target.value)} />
+                </div>
+                <div className="mb-3">
+                    <label className="form-label text-white">Tipo</label>
+                    <select id="tipo" name="tipo" className="form-control" required value={tipo} onChange={(e) => setTipo(e.target.value)}>
+                        <option value="" disabled hidden>Seleccionar un tipo</option>
+                        <option value="3D">3D</option>
+                        <option value="2D">2D</option>
+                        <option value="AUDIO">AUDIO</option>
+                        <option value="VIDEO">VIDEO</option>
+                        <option value="SCRIPT">SCRIPT</option>
+                        <option value="IMAGE">IMAGE</option>
+                    </select>
+                </div>
+                <div className="mb-3">
+                    <label className="form-label text-white">Categorias</label>
+                    <input type="text" className="form-control" placeholder="Star Wars, Videojuegos,..." required value={categories} onChange={(e) => setCategories(e.target.value)} />
+                    {error && <div className="text-danger mt-1">{error}</div>}
+                </div>
+                <div className="mb-3">
+                    <label className="form-label text-white">Archivo</label>
+                    <input type="file" className="form-control" onChange={changeImage} required multiple />
+                </div>
 
-                    <div className="mb-3 justify-content">
-                        {asset && <img src={asset} alt="Vista previa" style={{ width: '300px', height: '150px' }} />}
-                    </div>
+                <div className="mb-3">
+                    <label className="form-label text-white">Portada</label>
+                    <input type="file" accept="image/*" className="form-control" onChange={changePortada} required multiple />
+                </div>
+
+                <div className="mb-3 justify-content">
+                    {portada && <img src={portada} alt="Vista previa" style={{ width: '300px', height: '150px' }} />}
+                </div>
 
 
-                    <button type="submit" className="btn btn-primary w-100">Subir</button>
-                </form>
-       
+                <button type="submit" className="btn btn-primary w-100">Subir</button>
             </div>
-        </div>
+        </form>
+
+
+
     );
 };
 
