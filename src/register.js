@@ -46,7 +46,7 @@ const Register = () => {
 
             Swal.fire({
                 title: '¡Alerta!',
-                text: error.response.data.error,
+                text: error.response.data ? error.response.data.error : 'No se ha podido guardar los datos',
                 icon: 'error', // Tipo de alerta (success, error, info, warning)
                 confirmButtonText: 'Aceptar', // Texto del botón
             });
