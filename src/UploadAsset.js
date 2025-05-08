@@ -90,8 +90,6 @@ const UploadAsset = () => {
 
     return (
 
-
-
         <form onSubmit={handleSubmit} className="d-flex justify-content-center align-items-center vh-100">
             <div className="container p-4" style={{ backgroundColor: "#2a2a2a", borderRadius: "10px", boxShadow: "0 0 10px rgba(0, 0, 0, 0.5)", width: "350px" }}>
                 <h2 className="text-center text-white">Sube tu Asset</h2>
@@ -100,13 +98,25 @@ const UploadAsset = () => {
                     <input type="text" className="form-control" placeholder="Nombre del asset..." required value={nombre} onChange={(e) => setNombre(e.target.value)} />
                 </div>
                 <div className="mb-3">
-                    <label className="form-label text-white">Descripcion del asset</label>
-                    <input type="text" className="form-control" placeholder="Descripción..." required value={descripcion} onChange={(e) => setDescripcion(e.target.value)} />
+                    <label className="form-label text-white">Descripción del asset</label>
+                    <textarea
+                        className="form-control"
+                        placeholder="Descripción..."
+                        required
+                        value={descripcion}
+                        onChange={(e) => setDescripcion(e.target.value)}
+                        style={{
+                            resize: 'vertical',      // solo escala en eje Y
+                            minHeight: '100px',
+                            maxHeight: '400px',
+                            overflow: 'auto'         // muestra scroll si supera maxHeight
+                        }}
+                    />
                 </div>
                 <div className="mb-3">
                     <label className="form-label text-white">Categorias</label>
                     <select id="tipo" name="tipo" className="form-control" required value={tipo} onChange={(e) => setTipo(e.target.value)}>
-                        <option value="" disabled hidden>Seleccionar un tipo</option>
+                        <option value="" disabled hidden>Seleccionar una categoria</option>
                         <option value="3D">3D</option>
                         <option value="2D">2D</option>
                         <option value="AUDIO">AUDIO</option>

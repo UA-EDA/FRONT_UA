@@ -24,6 +24,7 @@ const navigate = useNavigate();
     try {
       const response = await postData('/auth/login', formData);
       localStorage.setItem('token', response.token);
+      localStorage.setItem('nombre', response.nombre);
       navigate('/'); 
    
     } catch (error) {

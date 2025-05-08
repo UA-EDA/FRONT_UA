@@ -4,7 +4,7 @@
     grid-template-columns: 2fr 1fr;
     gap: 24px;
     padding: 32px;
-    background: #0d0d0d;
+    background: #0d0d0d00;
     color: #3d3d3d;
     min-height: 100vh;
     font-family: Arial, sans-serif;

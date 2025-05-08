@@ -70,7 +70,7 @@ const AssetView = () => {
         <div className="av-page">
             <div className="av-main">
                 <div className="av-carousel">
-                    <img src={asset.archivo || 'default-image.jpg'} alt={asset.nombre} className="av-image" />
+                    <img src={asset.portada || 'default-image.jpg'} alt={asset.nombre} className="av-image" />
                     <div className="av-dots">
                         <span className="dot active" />
                         <span className="dot" />

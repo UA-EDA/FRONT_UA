@@ -17,8 +17,8 @@ function App() {
                 <Route path="/auth/register" element={<Register />} />
                 <Route path="/" element={<Layout><MainContent /></Layout>} />
                 <Route element={<AuthGuard />}>
-                    <Route path="/asset/upload" element={<AssetUpload />} />
-                    <Route path="/asset-view" element={<AssetView />} />
+                    <Route path="/asset/upload" element={<Layout><AssetUpload /></Layout>} />
+                    <Route path="/asset-view" element={<Layout><AssetView /></Layout>} />
                 </Route>
                 {/* Otras rutas */}
             </Routes>

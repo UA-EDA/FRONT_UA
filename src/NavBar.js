@@ -7,6 +7,7 @@ import { Link, useNavigate } from "react-router-dom";
 const NavBar = () => {
   const navigate = useNavigate();
   const [isAuth, setIsAuth] = useState(false);
+  const nombre = localStorage.getItem('nombre');
 
   useEffect(() => {
     const token = localStorage.getItem('token');
@@ -26,12 +27,13 @@ const NavBar = () => {
 
   const handleLogout = () => {
     localStorage.removeItem('token');
+    localStorage.removeItem('nombre');
     setIsAuth(false);
     navigate('/auth/login', { replace: true });
   };
 
   return (
-    <nav>
+    <nav class="nav-bar">
       <section className="logo">
         <Link to="/" className="logo">Asset-Lab</Link>
       </section>
@@ -50,23 +52,27 @@ const NavBar = () => {
           name="filtro"
           type="text"
           placeholder="Buscar..."
-          style={{ color: 'white' }}
+          style={{
+            color: 'white',
+            width: '400px'      // aquí defines el ancho
+          }}
         />
-        <button type="submit">
+        <button type="submit" onClick={() => navigate('/')}>
           <FontAwesomeIcon icon={faMagnifyingGlass} />
         </button>
       </form>
 
       {/* Renderizado condicional de los botones de sesión */}
       {isAuth ? (
-        <button onClick={handleLogout} className="logout-btn">
-          Cerrar Sesión <FontAwesomeIcon icon={faSignOutAlt} />
-        </button>
+        <Link to="/auth/login" className="login-link" onClick={handleLogout}>
+          Cerrar Sessión ({nombre}) <FontAwesomeIcon icon={faSignOutAlt} />
+        </Link>
       ) : (
         <Link to="/auth/login" className="login-link">
           Iniciar Sesión <FontAwesomeIcon icon={faUser} />
         </Link>
       )}
+
     </nav>
   );
 };
