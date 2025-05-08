@@ -102,7 +102,7 @@ const UploadAsset = () => {
                     </div>
                     <div className="mb-3">
                         <label className="form-label text-white">Archivo</label>
-                        <input type="file" className="form-control" accept="image/*" onChange={changeImage} required />
+                        <input type="file" className="form-control" onChange={changeImage} required multiple/>
                     </div>
 
                     <div className="mb-3 justify-content">
