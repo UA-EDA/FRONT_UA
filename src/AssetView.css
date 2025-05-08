@@ -1,0 +1,215 @@
+/* Paleta de grises oscuros + acentos verdes */
+.av-page {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 24px;
+    padding: 32px;
+    background: #0d0d0d;
+    color: #3d3d3d;
+    min-height: 100vh;
+    font-family: Arial, sans-serif;
+}
+
+.av-main {
+    background: #2a2a2a;
+    border-radius: 12px;
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.av-carousel {
+    position: relative;
+    width: 100%;
+    max-width: 600px;
+    overflow: hidden;
+    border-radius: 8px;
+    margin-bottom: 16px;
+}
+
+.av-image {
+    width: 100%;
+    display: block;
+}
+
+.av-dots {
+    position: absolute;
+    bottom: 12px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 8px;
+}
+
+.dot {
+    width: 10px;
+    height: 10px;
+    background: rgba(255, 255, 255, 0.4);
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.dot.active {
+    background: #00e676;
+}
+
+.av-3d-btn {
+    background: #00e676;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 24px;
+    color: #1a1a1a;
+    font-size: 16px;
+    margin-bottom: 24px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.av-description {
+    text-align: justify;
+    line-height: 1.6;
+    font-size: 14px;
+    color: white;
+}
+
+.av-sidebar {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+.card {
+    background: #2a2a2a;
+    padding: 16px;
+    border-radius: 12px;
+}
+
+.av-header-card h2 {
+    margin: 0 0 8px;
+    font-size: 30px;
+    letter-spacing: 1px;
+    color: white;
+    font-weight: bold;
+}
+
+.av-tags {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 8px;
+    color: white;
+}
+
+.tag {
+    background: #262626;
+    padding: 4px 8px;
+    border-radius: 8px;
+    font-size: 12px;
+}
+
+.av-rating {
+    font-size: 14px;
+    color: #ffca28;
+}
+
+.av-license-card label {
+    display: block;
+    margin-bottom: 8px;
+    font-size: 14px;
+}
+
+.av-license-card select {
+    width: 100%;
+    padding: 8px;
+    border-radius: 8px;
+    border: none;
+    background: #333;
+    color: #eee;
+}
+
+.av-details-card h3 {
+    margin-top: 0;
+    font-size: 18px;
+    color: white;
+    font-weight: bold;
+}
+
+.av-details-card ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.av-details-card li {
+    margin-bottom: 8px;
+    font-size: 14px;
+    color: white;
+}
+
+.av-details-card {
+    background-color: #3d3d3d !important;
+}
+
+.av-header-card {
+    background-color: #3d3d3d !important;
+}
+
+.av-header-card p {
+    color: white;
+    font-weight: bold;
+}
+
+.av-loading,
+.av-error {
+    color: #eee;
+    text-align: center;
+    margin-top: 50px;
+    font-size: 18px;
+}
+
+.av-page {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+.av-main {
+    flex: 2;
+}
+
+.av-sidebar {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.av-header-card,
+.av-details-card {
+    padding: 15px;
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.av-download-section {
+    margin-top: 20px;
+    display: flex;
+    justify-content: flex-end;
+    /* Alinea a la derecha */
+}
+
+.av-download-btn {
+    padding: 10px 20px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.av-download-btn:hover {
+    background-color: #45a049;
+}
