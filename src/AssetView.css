@@ -106,6 +106,12 @@
     border-radius: 8px;
     font-size: 12px;
 }
+.cat {
+    background: #262626;
+    padding: 4px 8px;
+    border-radius: 12px;
+    font-size: 15px;
+}
 
 .av-rating {
     font-size: 14px;
@@ -213,3 +219,14 @@
 .av-download-btn:hover {
     background-color: #45a049;
 }
+
+.av-category-row {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem; /* Espacio entre el <p> y el <div> */
+  }
+  
+  .av-category-row p {
+    margin: 0; /* Elimina espacio vertical adicional */
+  }
+  
