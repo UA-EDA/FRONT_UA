@@ -44,4 +44,14 @@ export const uploadAsset = async (endpoint, data) => {
   }
 };
 
+export const getAssets = async (endpoint, data) => {
+  try {
+    const response = await api.get(endpoint, data);
+    return response.data;
+  } catch (error) {
+    console.error("Error al enviar datos:", error);
+    throw error;
+  }
+};
+
 export default api;
