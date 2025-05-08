@@ -3,6 +3,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faChevronLeft, faChevronRight } from "@fortawesome/free-solid-svg-icons";
 import "./style.css";
 import { getAssets } from "./services/apiService";
+import { getData } from "./services/apiService";
 
 const Contenedor = ({ titulo, assets }) => {
   const [currentPage, setCurrentPage] = useState(0);
@@ -55,23 +56,49 @@ const Contenedor = ({ titulo, assets }) => {
 const MainContent = () => {
   const [assets, setAssets] = useState([]);
 
+  const queryString = window.location.search;
+
+  // 2. Crea un objeto URLSearchParams
+  const params = new URLSearchParams(queryString);
+
+  const filtro = params.get('filtro') ? params.get('filtro') : '';
+
   useEffect(() => {
-    async function fetchAssets() {
-      try {
-        const resp = await getAssets("/asset");
-        setAssets(resp.resultado);
-      } catch (error) {
-        console.error("Error cargando assets:", error);
+    if (filtro == '') {
+      async function fetchAssets() {
+        try {
+          const resp = await getAssets("/asset");
+          setAssets(resp.resultado);
+        } catch (error) {
+          console.error("Error cargando assets:", error);
+        }
       }
+      fetchAssets();
+    } else {
+      async function fetchAssets() {
+        try {
+          const resp = await getData(`/asset/filtro/${filtro}`);
+          setAssets(resp.resultado);
+        } catch (error) {
+          console.error("Error cargando assets:", error);
+        }
+      }
+      fetchAssets();
     }
-    fetchAssets();
+
   }, []);
 
   return (
     <div>
-      <Contenedor titulo="PUBLICACIONES RECIENTES" assets={assets} />
-      <Contenedor titulo="CONTENIDO GRATUITO" assets={assets} />
-      <Contenedor titulo="MATERIALES Y TEXTURAS" assets={assets} />
+      {filtro === '' ? (
+        <>
+          <Contenedor titulo="PUBLICACIONES RECIENTES" assets={assets} />
+          <Contenedor titulo="CONTENIDO GRATUITO" assets={assets} />
+          <Contenedor titulo="MATERIALES Y TEXTURAS" assets={assets} />
+        </>
+      ) : (
+        <Contenedor titulo="FILTRADO" assets={assets} />
+      )}
     </div>
   );
 };
