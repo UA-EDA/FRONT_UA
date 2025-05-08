@@ -1,24 +1,13 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faChevronLeft, faChevronRight } from "@fortawesome/free-solid-svg-icons";
 import "./style.css";
-
-
-
-
-const assets = [
-  { title: "Roma", author: "Fidel Mas", imgSrc: "./roma.jpg", link: "" },
-  { title: "Roma", author: "Fidel Mas", imgSrc: "roma.jpg", link: "" },
-  { title: "Roma", author: "Fidel Mas", imgSrc: "roma.jpg", link: "" },
-  { title: "Roma", author: "Fidel Mas", imgSrc: "roma.jpg", link: "" },
-  { title: "Roma", author: "Fidel Mas", imgSrc: "roma.jpg", link: "" },
-];
+import { getAssets } from "./services/apiService";
 
 const Contenedor = ({ titulo, assets }) => {
   const [currentPage, setCurrentPage] = useState(0);
-  const itemsPerPage = 5;
-
-  const maxPage = Math.floor((assets.length - 1) / itemsPerPage); // Ajuste para evitar página vacía
+  const itemsPerPage = 4;
+  const maxPage = Math.floor((assets.length - 1) / itemsPerPage);
 
   const nextPage = () => {
     setCurrentPage((prev) => (prev < maxPage ? prev + 1 : prev));
@@ -43,13 +32,13 @@ const Contenedor = ({ titulo, assets }) => {
           </button>
 
           <div className="asset-list">
-            {visibleAssets.map((asset, index) => (
-              <div className="asset" key={index}>
+            {visibleAssets.map((asset) => (
+              <div className="asset" key={asset.id /* o asset._id */}>
                 <a href={asset.link}>
-                  <img src={asset.imgSrc} alt={`Viaje a ${asset.title}`} />
+                  <img src={asset.archivo} alt={asset.title} />
                 </a>
                 <h3 title={asset.title}>{asset.title}</h3>
-                <p>Por {asset.author}</p>
+                <p>Por {asset.autor?.nombre_completo ?? "Autor desconocido"}</p>
               </div>
             ))}
           </div>
@@ -64,6 +53,20 @@ const Contenedor = ({ titulo, assets }) => {
 };
 
 const MainContent = () => {
+  const [assets, setAssets] = useState([]);
+
+  useEffect(() => {
+    async function fetchAssets() {
+      try {
+        const resp = await getAssets("/asset");
+        setAssets(resp.resultado);
+      } catch (error) {
+        console.error("Error cargando assets:", error);
+      }
+    }
+    fetchAssets();
+  }, []);
+
   return (
     <div>
       <Contenedor titulo="PUBLICACIONES RECIENTES" assets={assets} />

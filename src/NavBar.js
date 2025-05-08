@@ -3,6 +3,7 @@ import "./style.css"; // Importa los estilos
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMagnifyingGlass, faUser } from "@fortawesome/free-solid-svg-icons"; 
 
+
 const NavBar = () => {
   return (
     <nav>
@@ -13,8 +14,8 @@ const NavBar = () => {
         <button className="mis_assets"> Mis assets</button>
       </div>
 
-      <form action="buscar.html">
-        <input type="text" placeholder="Buscar..." />
+      <form >
+        <input name="filtro" type="text" placeholder="Buscar..." />
         <button type="submit">
           <FontAwesomeIcon icon={faMagnifyingGlass} />
         </button>
