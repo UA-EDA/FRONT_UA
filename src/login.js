@@ -8,7 +8,7 @@ const navigate = useNavigate();
 
   const [formData, setFormData] = useState({ email: '', password: '' });
   const [loading, setLoading] = useState(false);
-  const [message, setMessage] = useState('');
+
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -17,14 +17,15 @@ const navigate = useNavigate();
   const handleSubmit = async (e) => {
     e.preventDefault(); // Evitar la recarga de la página
     setLoading(true);
-    setMessage('');
+
 
     console.log('Enviando datos:', formData); // Verifica los datos antes de enviarlos
 
     try {
       const response = await postData('/auth/login', formData);
+      localStorage.setItem('token', response.token);
       navigate('/'); 
-      setMessage('Datos enviados con éxito: ' + JSON.stringify(response));
+   
     } catch (error) {
       console.log(error);
 
@@ -34,7 +35,7 @@ const navigate = useNavigate();
         icon: 'error', // Tipo de alerta (success, error, info, warning)
         confirmButtonText: 'Aceptar', // Texto del botón
       });
-      setMessage('Error al enviar datos.');
+
     } finally {
       setLoading(false);
     }

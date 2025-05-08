@@ -1,6 +1,7 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Login from "./Login";
 import Register from "./Register";
+import AssetUpload from "./UploadAsset";
 
 function App() {
     return (
@@ -8,6 +9,7 @@ function App() {
             <Routes>
                 <Route path="/auth/login" element={<Login />} />
                 <Route path="/auth/register" element={<Register />} />
+                <Route path="/asset/upload" element={<AssetUpload />} />
                 {/* Otras rutas */}
             </Routes>
         </Router>
