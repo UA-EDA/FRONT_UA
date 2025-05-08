@@ -71,42 +71,49 @@ const Register = () => {
     };
 
     return (
-        <div className="d-flex justify-content-center align-items-center vh-100" >
+
+
+
+        <form onSubmit={handleSubmit} className="d-flex justify-content-center align-items-center vh-100" >
+
             <div className="container p-4" style={{ backgroundColor: "#2a2a2a", borderRadius: "10px", boxShadow: "0 0 10px rgba(0, 0, 0, 0.5)", width: "350px" }}>
-                <h2 className="text-center text-white">Registro</h2>
-                <form onSubmit={handleSubmit}>
-                    <div className="mb-3">
-                        <label className="form-label text-white">Nombre</label>
-                        <input type="text" className="form-control" placeholder="Tu nombre" required value={nombre_completo} onChange={(e) => setNombre(e.target.value)} />
-                    </div>
-                    <div className="mb-3">
-                        <label className="form-label text-white">Email</label>
-                        <input type="email" className="form-control" placeholder="Tu email" required value={email} onChange={(e) => setEmail(e.target.value)} />
-                    </div>
-                    <div className="mb-3">
-                        <label className="form-label text-white">Contraseña</label>
-                        <input type="password" className="form-control" placeholder="Tu contraseña" required value={password} onChange={(e) => setPassword(e.target.value)} />
-                    </div>
-                    <div className="mb-3">
-                        <label className="form-label text-white">Confirmar Contraseña</label>
-                        <input type="password" className="form-control" placeholder="Repite la contraseña" required value={confirmPassword} onChange={(e) => setConfirmPassword(e.target.value)} />
-                        {error && <div className="text-danger mt-1">{error}</div>}
-                    </div>
-                    <div className="mb-3">
-                        <label className="form-label text-white">Foto de perfil</label>
-                        <input type="file" className="form-control" accept="image/*" onChange={changeImage} required/>
-                    </div>
+                <h2 className="text-center text-white fw-bold mb-3">Registro</h2>
+                <div className="mb-3">
+                    <label className="form-label text-white">Nombre</label>
+                    <input type="text" className="form-control" placeholder="Tu nombre" required value={nombre_completo} onChange={(e) => setNombre(e.target.value)} />
+                </div>
+                <div className="mb-3">
+                    <label className="form-label text-white">Email</label>
+                    <input type="email" className="form-control" placeholder="Tu email" required value={email} onChange={(e) => setEmail(e.target.value)} />
+                </div>
+                <div className="mb-3">
+                    <label className="form-label text-white">Contraseña</label>
+                    <input type="password" className="form-control" placeholder="Tu contraseña" required value={password} onChange={(e) => setPassword(e.target.value)} />
+                </div>
+                <div className="mb-3">
+                    <label className="form-label text-white">Confirmar Contraseña</label>
+                    <input type="password" className="form-control" placeholder="Repite la contraseña" required value={confirmPassword} onChange={(e) => setConfirmPassword(e.target.value)} />
+                    {error && <div className="text-danger mt-1">{error}</div>}
+                </div>
+                <div className="mb-3">
+                    <label className="form-label text-white">Foto de perfil</label>
+                    <input type="file" className="form-control" accept="image/*" onChange={changeImage} required />
+                </div>
 
-                    <div className="mb-3 justify-content">
-                        {foto && <img src={foto} alt="Vista previa" style={{ width: '300px', height: '150px' }} />}
-                    </div>
+                <div className="mb-3 justify-content">
+                    {foto && <img src={foto} alt="Vista previa" style={{ width: '300px', height: '150px' }} />}
+                </div>
 
 
-                    <button type="submit" className="btn btn-primary w-100">Registrarse</button>
-                </form>
+                <button type="submit" className="btn btn-primary w-100">Registrarse</button>
                 <a href="/auth/login" className="d-block text-center mt-3" style={{ color: "#0094ff" }}>¿Ya tienes cuenta? Inicia sesión</a>
             </div>
-        </div>
+
+            
+
+        </form>
+
+
     );
 };
 
