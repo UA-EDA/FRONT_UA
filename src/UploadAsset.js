@@ -45,9 +45,11 @@ const UploadAsset = () => {
         } catch (error) {
             console.log(error);
 
+
+
             Swal.fire({
                 title: '¡Alerta!',
-                text: error.response.data.error,
+                text: error.response.data ? error.response.data.error : 'No se ha podido guardar los datos',
                 icon: 'error', // Tipo de alerta (success, error, info, warning)
                 confirmButtonText: 'Aceptar', // Texto del botón
             });
@@ -87,6 +89,7 @@ const UploadAsset = () => {
                     <div className="mb-3">
                         <label className="form-label text-white">Tipo</label>
                         <select id="tipo" name="tipo" className="form-control" required value={tipo} onChange={(e) => setTipo(e.target.value)}>
+                            <option value="" disabled hidden>Seleccionar un tipo</option>
                             <option value="3D">3D</option>
                             <option value="2D">2D</option>
                             <option value="AUDIO">AUDIO</option>

@@ -31,7 +31,7 @@ const navigate = useNavigate();
 
       Swal.fire({
         title: '¡Alerta!',
-        text: error.response.data.error,
+        text: error.response.data ? error.response.data.error : 'No se ha podido hacer login',
         icon: 'error', // Tipo de alerta (success, error, info, warning)
         confirmButtonText: 'Aceptar', // Texto del botón
       });
