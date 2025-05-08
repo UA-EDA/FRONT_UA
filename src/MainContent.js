@@ -36,7 +36,7 @@ const Contenedor = ({ titulo, assets }) => {
             {visibleAssets.map((asset) => (
               <div className="asset" key={asset.id /* o asset._id */}>
                 <a href={asset.link}>
-                  <img src={asset.archivo} alt={asset.title} />
+                  <img src={asset.portada} alt={asset.title} />
                 </a>
                 <h3 title={asset.title}>{asset.title}</h3>
                 <p>Por {asset.autor?.nombre_completo ?? "Autor desconocido"}</p>
