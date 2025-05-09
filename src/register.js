@@ -38,8 +38,10 @@ const Register = () => {
                 icon: 'success', // Tipo de alerta (success, error, info, warning)
                 confirmButtonText: 'Aceptar', // Texto del botón
             });
-
-            navigate('/auth/login');
+            const loginResponse = await postData('/auth/login', { email, password });
+            localStorage.setItem('token', loginResponse.token);
+            localStorage.setItem('nombre', loginResponse.nombre);
+            navigate('/');
             // setMessage('Datos enviados con éxito: ' + JSON.stringify(response));
         } catch (error) {
             console.log(error);
@@ -109,7 +111,7 @@ const Register = () => {
                 <a href="/auth/login" className="d-block text-center mt-3" style={{ color: "#0094ff" }}>¿Ya tienes cuenta? Inicia sesión</a>
             </div>
 
-            
+
 
         </form>
 
