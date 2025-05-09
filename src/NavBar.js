@@ -35,7 +35,7 @@ const NavBar = () => {
   return (
     <nav class="nav-bar">
       <section className="logo">
-        <Link to="/" className="logo">Asset-Lab</Link>
+        <a href="/" className="logo">Asset-Lab</a>
       </section>
 
       <div className="botones_nav">
