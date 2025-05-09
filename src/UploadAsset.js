@@ -89,66 +89,67 @@ const UploadAsset = () => {
     };
 
     return (
-
-        <form onSubmit={handleSubmit} className="d-flex justify-content-center align-items-center vh-100">
-            <div className="container p-4" style={{ backgroundColor: "#2a2a2a", borderRadius: "10px", boxShadow: "0 0 10px rgba(0, 0, 0, 0.5)", width: "350px" }}>
-                <h2 className="text-center text-white">Sube tu Asset</h2>
-                <div className="mb-3">
-                    <label className="form-label text-white">Nombre del asset</label>
-                    <input type="text" className="form-control" placeholder="Nombre del asset..." required value={nombre} onChange={(e) => setNombre(e.target.value)} />
+        <div style={{ minHeight: '100vh', backgroundColor: 'transparent', paddingTop: '40px', paddingBottom: '60px' }}>
+            <form onSubmit={handleSubmit} className="d-flex justify-content-center">
+                <div className="container p-4" style={{
+                    backgroundColor: "#2a2a2a",
+                    borderRadius: "10px",
+                    boxShadow: "0 0 10px rgba(0, 0, 0, 0.5)",
+                    width: "500px"
+                }}>
+                    <h2 className="text-center text-white">Sube tu Asset</h2>
+                    <div className="mb-3">
+                        <label className="form-label text-white">Nombre del asset</label>
+                        <input type="text" className="form-control" placeholder="Nombre del asset..." required value={nombre} onChange={(e) => setNombre(e.target.value)} />
+                    </div>
+                    <div className="mb-3">
+                        <label className="form-label text-white">Descripción del asset</label>
+                        <textarea
+                            className="form-control"
+                            placeholder="Descripción..."
+                            required
+                            value={descripcion}
+                            onChange={(e) => setDescripcion(e.target.value)}
+                            style={{
+                                resize: 'vertical',
+                                minHeight: '80px',
+                                maxHeight: '400px',
+                                overflow: 'auto'
+                            }}
+                        />
+                    </div>
+                    <div className="mb-3">
+                        <label className="form-label text-white">Categorías</label>
+                        <select id="tipo" name="tipo" className="form-control" required value={tipo} onChange={(e) => setTipo(e.target.value)}>
+                            <option value="" disabled hidden>Seleccionar una categoría</option>
+                            <option value="3D">3D</option>
+                            <option value="2D">2D</option>
+                            <option value="AUDIO">AUDIO</option>
+                            <option value="VIDEO">VIDEO</option>
+                            <option value="SCRIPT">SCRIPT</option>
+                            <option value="IMAGE">IMAGE</option>
+                        </select>
+                    </div>
+                    <div className="mb-3">
+                        <label className="form-label text-white">Etiquetas</label>
+                        <input type="text" className="form-control" placeholder="Star Wars, Videojuegos,..." required value={categories} onChange={(e) => setCategories(e.target.value)} />
+                        {error && <div className="text-danger mt-1">{error}</div>}
+                    </div>
+                    <div className="mb-3">
+                        <label className="form-label text-white">Archivo</label>
+                        <input type="file" className="form-control" onChange={changeImage} required multiple />
+                    </div>
+                    <div className="mb-3">
+                        <label className="form-label text-white">Portada</label>
+                        <input type="file" accept="image/*" className="form-control" onChange={changePortada} required multiple />
+                    </div>
+                    <div className="mb-3 justify-content">
+                        {portada && <img src={portada} alt="Vista previa" style={{ width: '300px', height: '150px' }} />}
+                    </div>
+                    <button type="submit" className="btn btn-primary w-100">Subir</button>
                 </div>
-                <div className="mb-3">
-                    <label className="form-label text-white">Descripción del asset</label>
-                    <textarea
-                        className="form-control"
-                        placeholder="Descripción..."
-                        required
-                        value={descripcion}
-                        onChange={(e) => setDescripcion(e.target.value)}
-                        style={{
-                            resize: 'vertical',      // solo escala en eje Y
-                            minHeight: '100px',
-                            maxHeight: '400px',
-                            overflow: 'auto'         // muestra scroll si supera maxHeight
-                        }}
-                    />
-                </div>
-                <div className="mb-3">
-                    <label className="form-label text-white">Categorias</label>
-                    <select id="tipo" name="tipo" className="form-control" required value={tipo} onChange={(e) => setTipo(e.target.value)}>
-                        <option value="" disabled hidden>Seleccionar una categoria</option>
-                        <option value="3D">3D</option>
-                        <option value="2D">2D</option>
-                        <option value="AUDIO">AUDIO</option>
-                        <option value="VIDEO">VIDEO</option>
-                        <option value="SCRIPT">SCRIPT</option>
-                        <option value="IMAGE">IMAGE</option>
-                    </select>
-                </div>
-                <div className="mb-3">
-                    <label className="form-label text-white">Etiquetas</label>
-                    <input type="text" className="form-control" placeholder="Star Wars, Videojuegos,..." required value={categories} onChange={(e) => setCategories(e.target.value)} />
-                    {error && <div className="text-danger mt-1">{error}</div>}
-                </div>
-                <div className="mb-3">
-                    <label className="form-label text-white">Archivo</label>
-                    <input type="file" className="form-control" onChange={changeImage} required multiple />
-                </div>
-
-                <div className="mb-3">
-                    <label className="form-label text-white">Portada</label>
-                    <input type="file" accept="image/*" className="form-control" onChange={changePortada} required multiple />
-                </div>
-
-                <div className="mb-3 justify-content">
-                    {portada && <img src={portada} alt="Vista previa" style={{ width: '300px', height: '150px' }} />}
-                </div>
-
-
-                <button type="submit" className="btn btn-primary w-100">Subir</button>
-            </div>
-        </form>
-
+            </form>
+        </div >
 
 
     );
