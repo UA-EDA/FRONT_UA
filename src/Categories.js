@@ -51,7 +51,7 @@ const Categories = () => {
                 key={asset._id}
                 onClick={() => navigate(`/asset-view?id=${asset._id}`)}
               >
-                <img src={asset.archivo} alt={asset.nombre} />
+                <img src={asset.portada} alt={asset.nombre} />
                 <h3>{asset.nombre}</h3>
                 <p>By {asset.autor?.nombre_completo || "Unknown"}</p>
               </div>
