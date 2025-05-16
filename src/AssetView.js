@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate, useLocation } from 'react-router-dom';
-import { getData } from './services/apiService';
+import { getData, postData } from './services/apiService';
 import Swal from 'sweetalert2';
 import './AssetView.css';
 
@@ -38,9 +38,7 @@ const AssetView = () => {
     const handleDownload = async () => {
         try {
             // 1. Descarga el archivo como Blob
-            const response = await fetch(asset.archivo, {
-                // si tu API necesita headers o autenticación, añádelos aquí
-            });
+            const response = await fetch(asset.archivo);
             if (!response.ok) throw new Error(`HTTP ${response.status}`);
             const blob = await response.blob();
 
@@ -57,12 +55,28 @@ const AssetView = () => {
 
             // 4. Revoca la URL para liberar memoria
             window.URL.revokeObjectURL(url);
+
+            // 5. Incrementa el contador de descargas en la DB
+            await postData('/asset/increment-download', { id });
+
+            // Opcional: actualizar localmente el contador en el estado
+            setAsset(prev => ({ ...prev, num_descargas: (prev.num_descargas || 0) + 1 }));
+
         } catch (err) {
             Swal.fire({
                 icon: 'error',
                 title: 'Error descargando el asset',
                 text: err.message || 'No se pudo completar la descarga.'
             });
+        }
+    };
+
+    const handleScore = async (isLiked) => {
+        try {
+            await postData('/asset/like', { id, isLiked });
+            setAsset(prev => ({ ...prev, likes: (prev.likes || 0) + (isLiked ? 1 : -1) }));
+        } catch (error) {
+            console.error(error);
         }
     };
 
@@ -120,6 +134,11 @@ const AssetView = () => {
                         <li><strong>Número de descargas:</strong> {asset.num_descargas || 0}</li>
                     </ul>
                 </div>
+
+                <li>
+                    <button class="av-like-btn" onClick={() => handleScore(true)}>👍</button>
+                    <button class="av-like-btn" onClick={() => handleScore(false)}>👎</button>
+                </li>
 
                 {/* Sección de Descarga en su propia sección abajo de los detalles */}
                 <div className="av-download-section">
