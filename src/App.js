@@ -1,7 +1,7 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import AuthGuard from './AuthGuard';
 import Categories from "./Categories";
-import Login from "./Login";
+import Login from "./login";
 import Register from "./Register";
 import AssetUpload from "./UploadAsset";
 import AssetView from "./AssetView";
