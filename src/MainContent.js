@@ -87,7 +87,7 @@ const MainContent = () => {
       fetchAssets();
     }
 
-  }, []);
+  });
 
   return (
     <div>

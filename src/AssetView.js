@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useNavigate, useLocation } from 'react-router-dom';
+import {  useLocation } from 'react-router-dom';
 import { getData, postData } from './services/apiService';
 import Swal from 'sweetalert2';
 import './AssetView.css';
