@@ -36,6 +36,7 @@ export const postData = async (endpoint, data) => {
 
 export const uploadAsset = async (endpoint, data) => {
   try {
+    console.log('toke0 '+token)
     const response = await api.post(endpoint, data);
     return response.data;
   } catch (error) {
