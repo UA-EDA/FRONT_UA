@@ -11,7 +11,7 @@ function useQuery() {
 const AssetView = () => {
     const query = useQuery();
     const id = query.get("id");
-    const navigate = useNavigate();
+   
     const [asset, setAsset] = useState(null);
     const [loading, setLoading] = useState(true);
 

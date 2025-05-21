@@ -33,7 +33,7 @@ const UploadAsset = () => {
         categorias = categorias.map(x => x.trim());
 
         try {
-            const response = await postData('/asset/subir', { nombre, descripcion, tipo, asset, categorias, portada });
+            await postData('/asset/subir', { nombre, descripcion, tipo, asset, categorias, portada });
             Swal.fire({
                 title: '¡Alerta!',
                 text: 'Asset Creado correctamente',

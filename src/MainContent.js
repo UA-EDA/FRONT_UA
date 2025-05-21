@@ -65,7 +65,7 @@ const MainContent = () => {
   const filtro = params.get('filtro') ? params.get('filtro') : '';
 
   useEffect(() => {
-    if (filtro == '') {
+    if (filtro === '') {
       async function fetchAssets() {
         try {
           const resp = await getAssets("/asset");

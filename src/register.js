@@ -31,7 +31,7 @@ const Register = () => {
         console.log('Enviando datos:', { nombre_completo, email, password, foto }); // Verifica los datos antes de enviarlos
 
         try {
-            const response = await postData('/auth/register', { nombre_completo, email, password, foto });
+            await postData('/auth/register', { nombre_completo, email, password, foto });
             Swal.fire({
                 title: '¡Alerta!',
                 text: 'Usuario Creado correctamente',

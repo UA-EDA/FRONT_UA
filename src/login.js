@@ -76,7 +76,7 @@ const navigate = useNavigate();
           </div>
 
           <div className="text-center mb-3">
-            <a href="#" className="text-primary text-decoration-none">
+            <a href="/auth/register" className="text-primary text-decoration-none">
               Olvidaste tu contraseña
             </a>
           </div>
