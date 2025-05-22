@@ -168,15 +168,15 @@ const AssetView = () => {
                 <li>
                     <button className="av-like-btn" onClick={() => handleScore(true)}>
                         <FontAwesomeIcon
-                            icon={userVote === false || userVote == undefined ? regularThumbsUp : solidThumbsUp}
-                            color={userVote === true || userVote == undefined ? '#0a84ff' : '#888'}
+                            icon={userVote === false || userVote === undefined ? regularThumbsUp : solidThumbsUp}
+                            color={userVote === true || userVote === undefined ? '#0a84ff' : '#888'}
                         />
                     </button>
 
                     <button className="av-like-btn" onClick={() => handleScore(false)}>
                         <FontAwesomeIcon
-                            icon={userVote === true || userVote == undefined ? regularThumbsDown : solidThumbsDown}
-                            color={userVote === false || userVote == undefined ? '#ff3b30' : '#888'}
+                            icon={userVote === true || userVote === undefined ? regularThumbsDown : solidThumbsDown}
+                            color={userVote === false || userVote === undefined ? '#ff3b30' : '#888'}
                         />
                     </button>
                 </li>

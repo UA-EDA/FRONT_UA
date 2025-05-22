@@ -28,11 +28,6 @@ const translations = {
       name: "Nombre",
       email: "Email",
       password: "Contraseña",
-      assets: "Mis Assets",
-      downloads: "Descargas",
-      config: "Configuración",
-      logout: "Cerrar Sesión",
-      title: "Bienvenido"
 
     },
     login: {
@@ -72,11 +67,6 @@ const translations = {
       name: "Name",
       email: "Email",
       password: "Password",
-      assets: "My Assets",
-      downloads: "Downloads",
-      config: "Settings",
-      logout: "Log Out",
-      title: "Welcome"
     },
     login: {
       title: "Login",
