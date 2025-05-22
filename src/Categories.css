@@ -184,3 +184,121 @@ body.modo-claro .no-assets-message {
   background-color: white;
 }
 
+
+/* Responsive para móviles */
+@media (max-width: 600px) {
+  .categories-container {
+    margin: 20px 10px;
+    padding: 0 10px;
+  }
+
+  .categories-title {
+    font-size: 20px;
+    padding: 8px 16px;
+    border-radius: 30px;
+  }
+
+  .categories-buttons {
+    gap: 8px;
+    justify-content: center;
+  }
+
+  .category-btn {
+    padding: 8px 14px;
+    font-size: 14px;
+    border-radius: 30px;
+    min-width: 70px;
+  }
+
+  .categories-content {
+    padding: 15px;
+    border-radius: 20px;
+  }
+
+  @media (max-width: 600px) {
+    .categories-assets {
+      display: flex;          
+      flex-wrap: nowrap;      
+      overflow-x: auto;      
+      gap: 12px;
+      padding-bottom: 10px;    
+      scroll-snap-type: x mandatory;
+    }
+  
+    .asset-card {
+      flex: 0 0 auto;            /* que no se encoja ni crezca */
+      scroll-snap-align: center; /* opcional: para snap */
+      width: 150px;
+      height: 180px;
+      border-radius: 20px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.5);
+    }
+  }
+  
+  .asset-card img {
+    height: 65%;
+    border-radius: 20px 20px 0 0;
+  }
+
+  .asset-card h3 {
+    font-size: 14px;
+    white-space: normal;
+    overflow: visible;
+    text-overflow: clip;
+    margin: 6px 8px 0 8px;
+  }
+
+  .asset-card p {
+    font-size: 10px;
+    margin: 0 8px 8px 8px;
+  }
+
+  .no-assets-message {
+    padding: 30px 15px;
+    font-size: 16px;
+  }
+  
+  /* Modo claro para móvil */
+  body.modo-claro .categories-container {
+    color: #222;
+  }
+
+  body.modo-claro .categories-title {
+    font-size: 18px;
+    padding: 6px 12px;
+    border-radius: 20px;
+  }
+
+  body.modo-claro .category-btn {
+    padding: 0.4rem 0.8rem;
+    font-size: 14px;
+    min-width: 70px;
+  }
+
+  body.modo-claro .categories-content {
+    padding: 0.8rem;
+    border-radius: 12px;
+  }
+
+  body.modo-claro .asset-card {
+    width: 140px;
+    height: 180px;
+    border-radius: 12px;
+  }
+
+  body.modo-claro .asset-card img {
+    border-radius: 12px 12px 0 0;
+  }
+
+  body.modo-claro .asset-card h3 {
+    font-size: 14px;
+  }
+
+  body.modo-claro .asset-card p {
+    font-size: 11px;
+  }
+
+  body.modo-claro .no-assets-message {
+    font-size: 16px;
+  }
+}

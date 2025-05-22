@@ -6,8 +6,6 @@ import { useNavigate } from 'react-router-dom';
 import { useContext } from "react";
 import LangContext from "./LangContext";
 import translations from "./translations";
-
-
 import useTema from './useTema';
 
 

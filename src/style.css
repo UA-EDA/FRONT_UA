@@ -27,6 +27,308 @@ nav {
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
 }
 
+  .botones_nav button:hover,
+  form button:hover,
+  .opcion-btn:hover,
+  .login-link:hover,
+  .editar-btn:hover {
+    background-color: #333;
+ 
+  }
+  
+  form {
+    margin-left: 30px;
+    
+    display: flex;
+    align-items: center;
+  }
+  
+  form input {
+    flex-grow: 1;        /* que crezca ocupando el espacio disponible */
+    min-width: 200px;    /* ancho mínimo para que no se achique mucho */
+    padding: 10px 15px;
+    font-size: 16px;
+    border: 2px solid #343333;
+    background-color: #343333;
+    border-radius: 50px;
+    margin-right: 5px;
+    outline: none;
+    color: white;
+    box-sizing: border-box;
+    line-height: normal;
+    display: flex;
+    align-items: center;
+  }
+  
+  
+  form input:focus {
+    border-color: aqua;
+  }
+  
+  .login-container {
+    margin-left: auto;
+    margin-right: 20px;
+  }
+  
+  .login-link {
+    text-decoration: none;
+    font-size: 18px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: white;
+    transition: color 0.3s ease;
+  }
+  
+  .login-link:hover {
+    color: aqua;
+  }
+  
+/* Contenedor login visible solo en desktop */
+.desktop-login {
+  margin-left: auto; /* Empuja a la derecha */
+  margin-right: 20px;
+  display: flex;
+  align-items: center;
+}
+
+/* Contenedor login visible solo en móvil */
+.menu {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+/* Botón hamburguesa - oculto en desktop */
+.hamburger {
+  display: none;
+  background: none;
+  border: none;
+  color: white;
+  cursor: pointer;
+  margin-left: 20px;
+}
+
+/* Ocultamos el login móvil por defecto */
+.mobile-login {
+  display: none;
+}
+  /* ======== SECCIÓN / CONTENIDO ======== */
+  .titulo-seccion {
+    color: white;
+    font-size: 22px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    padding: 10px 25px;
+    background-color: #2a2a2a;
+    border-radius: 30px;
+    display: inline-block;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+    margin-left: 65px;
+  }
+  
+  .contenedor {
+    align-items: center;
+  }
+  
+  .contenido {
+    background-color: #404040;
+    max-width: 1300px;
+    margin: 50px auto;
+    border-radius: 30px;
+    padding: 25px 30px;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.5);
+  }
+  
+  /* ======== ASSETS ======== */
+  .asset {
+    width: 220px;
+    height: 250px;
+    border-radius: 50px;
+    background-color: #343333;
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.6);
+    text-align: center;
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+    overflow: hidden;
+    cursor: pointer;
+  }
+  
+  .asset:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.7);
+  }
+  
+  .asset img {
+    width: 100%;
+    height: 70%;
+    object-fit: cover;
+    border-radius: 50px 50px 0 0;
+  }
+  
+  .asset h3 {
+    font-size: 16px;
+    color: white;
+    margin: 12px 10px 6px 10px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  
+  .asset p {
+    font-size: 12px;
+    color: #7b7b7b;
+    margin: 0 10px 10px 10px;
+  }
+  
+  .asset-list {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+    justify-content: center;
+    border-radius: 20px !important;
+    flex: 1;
+  }
+  
+  /* ======== SCROLL FLECHAS ======== */
+  .contenido-scroll {
+    display: flex;
+    align-items: center;
+    position: relative;
+  }
+  
+  .flecha {
+    background-color: rgba(255, 255, 255, 0.2);
+    color: white;
+    border: none;
+    padding: 18px 22px;
+    font-size: 18px;
+    cursor: pointer;
+    border-radius: 20px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.6);
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    z-index: 1;
+    user-select: none;
+  }
+  
+  .flecha:hover {
+    background-color: #333;
+    transform: scale(1.1);
+  }
+  
+  .flecha.izquierda {
+    margin-right: 12px;
+  }
+  
+  .flecha.derecha {
+    margin-left: 12px;
+  }
+  
+  /* ======== FOOTER ======== */
+  .pie-pagina {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background-color: #333;
+    color: #fff;
+    padding: 12px 20px;
+    text-align: left;
+    box-shadow: 0 -2px 8px rgba(0,0,0,0.5);
+    font-size: 14px;
+  }
+  
+  .pie-pagina p {
+    margin: 0;
+  }
+  
+  .pie-pagina a {
+    color: white;
+    text-decoration: underline;
+  }
+  
+  .pie-pagina a:hover {
+    color: aqua;
+  }
+  
+  /* ======== DASHBOARD ======== */
+  .dashboard-container {
+    padding-bottom: 70px;
+  }
+  
+  .dashboard-container h1 {
+    color: #fff;
+    text-align: center;
+    margin: 30px 0;
+  }
+  
+  .dashboard-contenedor {
+    display: flex;
+  }
+  
+  .dashboard-opciones {
+    flex: 1;
+    background-color: #494949;
+    padding: 20px;
+    border-radius: 20px;
+    margin: 0 10px 0 70px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    height: 700px;
+    overflow-y: auto;
+  }
+  
+  .dashboard-contenido {
+    flex: 3;
+    background-color: #494949;
+    padding: 20px;
+    border-radius: 20px;
+    margin: 0 100px 0 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
+    height: 700px;
+    overflow-y: auto;
+  }
+  
+  .dashboard-contenido h2 {
+    color: white;
+    font-size: 35px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    padding: 10px 25px;
+    background-color: #2a2a2a;
+    border-radius: 30px;
+    display: inline-block;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+  }
+  
+  .dashboard-contenido h3 {
+    color: white;
+  }
+  
+  /* ======== CONFIGURACIÓN ======== */
+  .configuracion-contenedor {
+    display: flex;
+  }
+  
+  .configuracion-opciones {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .configuracion-contenido {
+    flex: 3;
+    display: flex;
+    background-color: #555;
+    padding: 20px;
+    border-radius: 20px;
+    margin-left: 20px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
+    height: 550px;
+    overflow-y: auto;
+  }
+
 .nav-bar {
   background-color: #494949;
 }
@@ -740,3 +1042,361 @@ body.modo-claro a.text-primary {
 body.modo-claro a.text-primary:hover {
   text-decoration: underline !important;
 }
+
+  
+  body.modo-claro .container {
+    background-color: #ffffff !important;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1) !important;
+    border-radius: 10px !important;
+    width: 350px !important;
+  }
+  
+  body.modo-claro h2 {
+    color: #111 !important;
+  }
+  
+  body.modo-claro .form-label {
+    color: #333 !important;
+  }
+  
+  body.modo-claro .form-control {
+    background-color: #fff !important;
+    color: #000 !important;
+    border: 1px solid #ccc !important;
+    border-radius: 4px !important;
+  }
+  
+  body.modo-claro .form-control::placeholder {
+    color: #888 !important;
+  }
+  
+  body.modo-claro .btn-primary {
+    background-color: black !important;
+    border-color: black !important;
+    color: #fff !important;
+    border-radius: 4px !important;
+  }
+  
+  body.modo-claro .btn-primary:hover {
+    background-color: rgb(91, 91, 91) !important;
+    border-color: rgb(91, 91, 91) !important;
+  }
+  
+  body.modo-claro .btn-light {
+    background-color: #b0b0b0 !important;
+    color: black !important;
+    border: none !important;
+  }
+  
+  body.modo-claro .btn-light:hover {
+    background-color: #e2e6ea !important;
+    color: black !important;
+  }
+  
+  body.modo-claro .text-primary {
+    color: black !important;
+  }
+  
+  body.modo-claro a.text-primary {
+    text-decoration: none !important;
+  }
+  
+  body.modo-claro a.text-primary:hover {
+    text-decoration: underline !important;
+  }
+  
+
+  
+
+
+
+@media (max-width: 768px) {
+  nav {
+    flex-wrap: wrap;
+    padding: 15px 10px;
+  }
+
+  .hamburger {
+    display: block;
+    margin-left: auto;
+    background-color: #555;
+    border: none;
+    border-radius: 50%;
+    padding: 10px;
+    cursor: pointer;
+    color: white;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    width: 44px;
+    height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .hamburger:hover {
+    background-color: aqua;
+    color: #222;
+    transform: scale(1.1);
+  }
+  
+  .hamburger:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px aqua;
+  }
+  .menu {
+    display: none;
+    flex-direction: column;
+    width: 100%;
+
+    padding: 15px 0;
+    border-radius: 0 0 20px 20px;
+    margin-top: 10px;
+  }
+
+  .menu.menu-open {
+    display: flex;
+  }
+
+  .botones_nav {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    gap: 6px;
+    padding: 0 10px;
+    flex-wrap: nowrap;       
+    overflow-x: hidden;     
+  }
+  
+  .botones_nav button,
+  .botones_nav .usuario {
+    font-size: 13px;
+    padding: 6px 10px;
+    white-space: nowrap;    
+    flex-shrink: 1;         
+    min-width: 0;             
+    max-width: 100%;         
+  }
+  
+
+  /* Opcional: estilo para el botón/elemento usuario */
+  .botones_nav .usuario {
+    /* ejemplo */
+    padding: 0px 10px;
+    border-radius: 5px;
+    background-color: #666;
+    color: white;
+    cursor: pointer;
+  }
+
+  /* Aquí cambiamos el form a fila para que lupa e input estén en línea */
+  form {
+    width: 100%;
+    padding: 0 20px;
+    margin: 15px 0;
+    display: flex;
+    flex-direction: row;  /* fila, para input + lupa */
+    align-items: center; /* centra verticalmente */
+    gap: 10px;
+  }
+
+  /* El input ocupa el máximo ancho posible */
+  form input {
+    flex: 1;  /* para que crezca */
+    margin-bottom: 0; /* quitar margin para que no se rompa la fila */
+  }
+
+  /* El icono lupa debe tener tamaño fijo */
+  form .lupa {
+    flex: 0 0 auto;
+    cursor: pointer;
+  }
+
+  /* Login móvil centrado */
+  .mobile-login {
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+  }
+
+  .desktop-login {
+    display: none;
+  }
+}
+
+
+@media (max-width: 600px) {
+
+  html, body {
+    height: 100%;
+    margin: 0;
+  }
+
+  body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    padding-bottom: 100px; /* si quieres espacio extra abajo */
+    box-sizing: border-box;
+  }
+
+  /* Suponiendo que el contenido principal tiene clase .contenido */
+  .contenido {
+    flex: 1;  /* que el contenido crezca y ocupe espacio disponible */
+    margin: 20px 10px;
+    padding: 20px 15px;
+    border-radius: 20px;
+  }
+
+  .titulo-seccion {
+    font-size: clamp(12px, 4vw, 18px);
+    padding: 8px 10px;
+    margin: 0 0 10px 0;
+    text-align: center;
+    white-space: normal;
+    overflow: visible;
+  }
+  
+  
+
+  .asset-list {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    gap: 12px;
+    padding: 10px 0;
+    justify-content: flex-start;
+    scroll-snap-type: x mandatory;
+  }
+
+  .asset {
+    flex: 0 0 auto;
+    width: 160px;
+    height: 200px;
+    border-radius: 30px;
+    scroll-snap-align: center;
+  }
+
+  .asset img {
+    height: 65%;
+    border-radius: 30px 30px 0 0;
+  }
+
+  .asset h3 {
+    font-size: 14px;
+  }
+
+  .asset p {
+    font-size: 11px;
+  }
+
+  .contenido-scroll {
+    flex-direction: row;
+    gap: 10px;
+    overflow-x: auto;
+    scroll-behavior: smooth;
+  }
+
+  .flecha {
+    display: none;
+  }
+
+  .pie-pagina {
+    padding: 12px 10px;
+    font-size: 13px;
+    text-align: center;
+    background: #404040;
+    color: white;
+    /* ya no uses position: relative para footer pegado */
+    /* si quieres puedes añadir un box-shadow o borde arriba para separarlo */
+  }
+
+}
+
+/* Responsive para tablets y móviles */
+@media (max-width: 768px) {
+  .dashboard-contenedor {
+    flex-direction: column;
+  }
+
+  .dashboard-opciones {
+    flex: none;
+    margin: 0 10px 20px 10px;
+    height: auto;
+    max-height: 300px;
+    overflow-x: auto;
+    display: flex;
+    flex-wrap: nowrap;
+    gap: 10px;
+  }
+
+  .dashboard-opciones .opcion-btn {
+    flex: 1 0 auto;
+    min-width: 100px;
+  }
+
+  .dashboard-contenido {
+    flex: none;
+    margin: 0 10px;
+    height: auto;
+    max-height: 600px;
+    overflow-y: auto;
+  }
+
+  .configuracion-contenedor {
+    flex-direction: column;
+  }
+
+  .configuracion-opciones {
+    flex: none;
+    margin-bottom: 15px;
+    display: flex;
+    gap: 10px;
+    overflow-x: auto;
+  }
+
+  .configuracion-opciones .opcion-btn {
+    flex: 1 0 auto;
+    min-width: 120px;
+  }
+
+  .configuracion-contenido {
+    flex: none;
+    height: auto;
+    max-height: 400px;
+    margin-left: 0;
+  }
+
+  .tabla-perfil {
+    min-width: 100%;
+    overflow-x: auto;
+    display: block;
+  }
+
+  .tabla-perfil th,
+  .tabla-perfil td {
+    white-space: nowrap;
+  }
+}
+
+@media (max-width: 480px) {
+  .dashboard-container h1 {
+    font-size: 1.5rem;
+    margin: 20px 10px;
+  }
+
+  .dashboard-contenido h2 {
+    font-size: 24px;
+    padding: 8px 15px;
+  }
+
+  .dashboard-contenido h3 {
+    font-size: 18px;
+  }
+
+  .dashboard-opciones {
+    gap: 5px;
+  }
+}
+
+  
