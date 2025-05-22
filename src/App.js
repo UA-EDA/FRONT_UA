@@ -7,7 +7,7 @@ import AssetUpload from "./UploadAsset";
 import AssetView from "./AssetView";
 import MainContent from "./MainContent";
 import Layout from "./Layout"; // El layout con navbar y footer
-
+import UserDashboard from "./UserDashboard";
 
 function App() {
     return (
@@ -22,6 +22,7 @@ function App() {
                     <Route path="/asset-view" element={<Layout><AssetView /></Layout>} />
                 </Route>
                 <Route path="/auth/register" element={<Register />} />
+                <Route path="dashboard-usuario" element={<UserDashboard />}/>
                 {/* Otras rutas */}
             </Routes>
         </Router>
