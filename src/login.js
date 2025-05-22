@@ -79,9 +79,9 @@ const Login = () => {
         </div>
 
         <div className="text-center mb-3">
-          <a onClick={() => navigate("/auth/register")} className="text-primary text-decoration-none">
+          <button onClick={() => navigate("/auth/register")} className="text-primary text-decoration-none btn btn-light">
             Olvidaste tu contraseña
-          </a>
+          </button>
         </div>
 
         <button type="submit" disabled={loading} className="btn btn-primary w-100">
@@ -89,9 +89,9 @@ const Login = () => {
         </button>
 
         <div className="text-center mt-3">
-          <a onClick={() => navigate("/auth/register")} className="text-primary text-decoration-none">
+          < button onClick={() => navigate("/auth/register")} className="text-primary text-decoration-none btn btn-light">
             No tienes cuenta, crea una
-          </a>
+          </button>
         </div>
 
         <div className="text-center mt-3">
