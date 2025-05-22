@@ -3,12 +3,15 @@ import React, { useState } from "react";
 import { postData } from './services/apiService';
 import Swal from 'sweetalert2';
 import { useNavigate } from 'react-router-dom';
-
-
+import { useContext } from "react";
+import LangContext from "./LangContext";
+import translations from "./translations";
 
 
 const Register = () => {
     const navigate = useNavigate();
+    const { lang } = useContext(LangContext);
+    const t = translations[lang];
     const [nombre_completo, setNombre] = useState("");
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
@@ -79,39 +82,70 @@ const Register = () => {
         <form onSubmit={handleSubmit} className="d-flex justify-content-center align-items-center vh-100" >
 
             <div className="container p-4" style={{ backgroundColor: "#2a2a2a", borderRadius: "10px", boxShadow: "0 0 10px rgba(0, 0, 0, 0.5)", width: "350px" }}>
-                <h2 className="text-center text-white fw-bold mb-3">Registro</h2>
+                <h2 className="text-center text-white fw-bold mb-3">{t.register.title}</h2>
                 <div className="mb-3">
-                    <label className="form-label text-white">Nombre</label>
-                    <input type="text" className="form-control" placeholder="Tu nombre" required value={nombre_completo} onChange={(e) => setNombre(e.target.value)} />
+                    <label className="form-label text-white">{t.register.name}</label>
+                    <input
+                        type="text"
+                        className="form-control"
+                        placeholder={t.register.name_placeholder}
+                        required
+                        value={nombre_completo}
+                        onChange={(e) => setNombre(e.target.value)}
+                    />
                 </div>
                 <div className="mb-3">
-                    <label className="form-label text-white">Email</label>
-                    <input type="email" className="form-control" placeholder="Tu email" required value={email} onChange={(e) => setEmail(e.target.value)} />
+                    <label className="form-label text-white">{t.register.email}</label>
+                    <input
+                        type="email"
+                        className="form-control"
+                        placeholder={t.register.email_placeholder}
+                        required
+                        value={email}
+                        onChange={(e) => setEmail(e.target.value)}
+                    />
                 </div>
                 <div className="mb-3">
-                    <label className="form-label text-white">Contraseña</label>
-                    <input type="password" className="form-control" placeholder="Tu contraseña" required value={password} onChange={(e) => setPassword(e.target.value)} />
+                    <label className="form-label text-white">{t.register.password}</label>
+                    <input
+                        type="password"
+                        className="form-control"
+                        placeholder={t.register.password_placeholder}
+                        required
+                        value={password}
+                        onChange={(e) => setPassword(e.target.value)}
+                    />
                 </div>
                 <div className="mb-3">
-                    <label className="form-label text-white">Confirmar Contraseña</label>
-                    <input type="password" className="form-control" placeholder="Repite la contraseña" required value={confirmPassword} onChange={(e) => setConfirmPassword(e.target.value)} />
-                    {error && <div className="text-danger mt-1">{error}</div>}
+                    <label className="form-label text-white">{t.register.confirm_password}</label>
+                    <input
+                        type="password"
+                        className="form-control"
+                        placeholder={t.register.confirm_password_placeholder}
+                        required
+                        value={confirmPassword}
+                        onChange={(e) => setConfirmPassword(e.target.value)}
+                    />
+                    {error && <div className="text-danger mt-1">{t.register.password_mismatch}</div>}
                 </div>
                 <div className="mb-3">
-                    <label className="form-label text-white">Foto de perfil</label>
+                    <label className="form-label text-white">{t.register.photo}</label>
                     <input type="file" className="form-control" accept="image/*" onChange={changeImage} required />
                 </div>
-
                 <div className="mb-3 justify-content">
                     {foto && <img src={foto} alt="Vista previa" style={{ width: '300px', height: '150px' }} />}
                 </div>
-
-
-                <button type="submit" className="btn btn-primary w-100">Registrarse</button>
-                <button onClick={() => navigate("/auth/login")} className="d-block text-center mt-3 btn btn-light" style={{ color: "#0094ff" }}>¿Ya tienes cuenta? Inicia sesión</button>
+                <button type="submit" className="btn btn-primary w-100">
+                    {t.register.submit}
+                </button>
+                <button
+                    onClick={() => navigate("/auth/login")}
+                    className="d-block text-center mt-3 btn btn-light"
+                    style={{ color: "#0094ff" }}
+                >
+                    {t.register.have_account}
+                </button>
             </div>
-
-
 
         </form>
 

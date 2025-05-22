@@ -36,8 +36,28 @@ const translations = {
       password: "Contraseña",
       submit: "Iniciar sesión",
       no_account: "No tienes cuenta, crea una",
-      guest_access: "¿Entrar sin iniciar sesión?"
+      guest_access: "¿Entrar sin iniciar sesión?",
+      email_placeholder: "ejemplo@ejemplo.com...",
+      password_placeholder: "Contraseña...",
+      loading: "Iniciando sesión...",
+    },
+
+    register: {
+      title: "Crear cuenta",
+      name: "Nombre",
+      name_placeholder: "Tu nombre",
+      email: "Email",
+      email_placeholder: "Tu email",
+      password: "Contraseña",
+      password_placeholder: "Tu contraseña",
+      confirm_password: "Confirmar contraseña",
+      confirm_password_placeholder: "Repite la contraseña",
+      password_mismatch: "Las contraseñas no coinciden",
+      photo: "Foto de perfil",
+      submit: "Registrarse",
+      have_account: "¿Ya tienes cuenta? Inicia sesión"
     }
+
   },
 
   en: {
@@ -74,7 +94,26 @@ const translations = {
       password: "Password",
       submit: "Log in",
       no_account: "Don't have an account? Create one",
-      guest_access: "Enter without logging in?"
+      guest_access: "Enter without logging in?",
+      email_placeholder: "example@example.com...",
+      password_placeholder: "Password...",
+      loading: "Logging in...",
+    },
+
+    register: {
+      title: "Create account",
+      name: "Name",
+      name_placeholder: "Your name",
+      email: "Email",
+      email_placeholder: "Your email",
+      password: "Password",
+      password_placeholder: "Your password",
+      confirm_password: "Confirm password",
+      confirm_password_placeholder: "Repeat the password",
+      password_mismatch: "Passwords do not match",
+      photo: "Profile photo",
+      submit: "Register",
+      have_account: "Already have an account? Log in"
     }
   }
 };
