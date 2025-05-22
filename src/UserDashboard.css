@@ -74,6 +74,17 @@
   width: 100%;
 }
 
+.botones-idiomas {
+  max-height: 400px;
+  overflow-y: auto;
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none;  /* IE 10+ */
+}
+
+.botones-idiomas::-webkit-scrollbar {
+  display: none;
+}
+
 
 .configuracion-contenedor{
 

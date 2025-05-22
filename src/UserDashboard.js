@@ -6,7 +6,7 @@ import './UserDashboard.css';
 import { useContext } from "react";
 import LangContext from "./LangContext";
 import translations from "./translations";
-
+import languages from './languages';
 
 const UserDashboard = () => {
   const navigate = useNavigate();
@@ -97,12 +97,15 @@ const UserDashboard = () => {
           <div className="configuracion-idioma">
             <h3>{t.dashboard.select_language}</h3>
             <div className="botones-idiomas">
-              <button onClick={() => cambiarIdioma('es')} className="opcion-btn">
-                🇪🇸 Español
-              </button>
-              <button onClick={() => cambiarIdioma('en')} className="opcion-btn">
-                🇬🇧 English
-              </button>
+              {languages.map(langItem => (
+                <button
+                  key={langItem.code}
+                  onClick={() => cambiarIdioma(langItem.code)}
+                  className={`opcion-btn ${lang === langItem.code ? 'active' : ''}`}
+                >
+                  {langItem.flag} {langItem.label}
+                </button>
+              ))}
             </div>
           </div>
         );
