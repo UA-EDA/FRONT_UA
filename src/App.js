@@ -14,12 +14,13 @@ function App() {
             <Routes>
                 <Route path="/categories" element={<Layout><Categories /></Layout>} />
                 <Route path="/auth/login" element={<Login />} />
-                <Route path="/auth/register" element={<Register />} />
+              
                 <Route path="/" element={<Layout><MainContent /></Layout>} />
                 <Route element={<AuthGuard />}>
                     <Route path="/asset/upload" element={<Layout><AssetUpload /></Layout>} />
                     <Route path="/asset-view" element={<Layout><AssetView /></Layout>} />
                 </Route>
+                <Route path="/auth/register" element={<Register />} />
                 {/* Otras rutas */}
             </Routes>
         </Router>
