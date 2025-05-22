@@ -3,6 +3,8 @@ import "./style.css"; // Importa los estilos
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMagnifyingGlass, faUser, faSignOutAlt } from "@fortawesome/free-solid-svg-icons";
 import { Link, useNavigate } from "react-router-dom";
+import { getValidateToken } from "./services/apiService";
+
 
 const NavBar = () => {
   const navigate = useNavigate();
@@ -24,7 +26,7 @@ const NavBar = () => {
 
     getValidateToken('/auth/validate').then(x => {
       if (x.status === 200) {
-        setIsAuth(res.status === 200);
+        setIsAuth(x.status === 200);
       }
     }).catch(() => setIsAuth(false));
 
