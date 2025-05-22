@@ -1,4 +1,6 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { useState } from "react";
+import LangContext from "./LangContext";
 import AuthGuard from './AuthGuard';
 import Categories from "./Categories";
 import Login from "./login";
@@ -10,7 +12,11 @@ import Layout from "./Layout"; // El layout con navbar y footer
 import UserDashboard from "./UserDashboard";
 
 function App() {
+
+    const [lang, setLang] = useState(localStorage.getItem('lang') || 'es');
+    
     return (
+        <LangContext.Provider value={{ lang, setLang }}>
         <Router>
             <Routes>
                 <Route path="/categories" element={<Layout><Categories /></Layout>} />
@@ -27,6 +33,7 @@ function App() {
                 {/* Otras rutas */}
             </Routes>
         </Router>
+        </LangContext.Provider>
     );
 }
 
