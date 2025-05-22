@@ -9,7 +9,7 @@ const NavBar = () => {
   const navigate = useNavigate();
   const [isAuth, setIsAuth] = useState(false);
   let nombre = '';
-  let token = '';
+  let token;
 
   if (typeof window !== 'undefined') {
     // El código que usa localStorage va aquí
