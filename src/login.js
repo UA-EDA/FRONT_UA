@@ -78,12 +78,7 @@ const Login = () => {
           />
         </div>
 
-        <div className="text-center mb-3">
-          <button onClick={() => navigate("/auth/register")} className="text-primary text-decoration-none btn btn-light">
-            Olvidaste tu contraseña
-          </button>
-        </div>
-
+ 
         <button type="submit" disabled={loading} className="btn btn-primary w-100">
           {loading ? 'Iniciando sesión...' : 'Iniciar sesión'}
         </button>
