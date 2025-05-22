@@ -18,7 +18,6 @@ const UserDashboard = () => {
 
   const navigate = useNavigate();
   const [misAssets, setMisAssets] = useState([]);
-  const [loading, setLoading] = useState(true);
 
   const [nombreEditado, setNombreEditado] = useState('');
   const [emailEditado, setEmailEditado] = useState('');
@@ -62,7 +61,6 @@ const UserDashboard = () => {
           text: err.message || 'No se han podido obtener los datos.'
         });
       })
-      .finally(() => setLoading(false));
   }, []);
 
   const changeName = async (newName) => {

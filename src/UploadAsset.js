@@ -16,7 +16,7 @@ const UploadAsset = () => {
     const navigate = useNavigate();
     const [nombre, setNombre] = useState("");
     const [descripcion, setDescripcion] = useState("");
-    const [tipo, setTipo] = useState("");
+    const [tipo] = useState("");
     const [categories, setCategories] = useState("");
     const [asset, setFoto] = useState("");
     const [portada, setPortada] = useState("");
