@@ -22,7 +22,7 @@ function App() {
                     <Route path="/asset-view" element={<Layout><AssetView /></Layout>} />
                 </Route>
                 <Route path="/auth/register" element={<Register />} />
-                <Route path="dashboard-usuario" element={<UserDashboard />}/>
+                <Route path="/dashboard-usuario" element={<UserDashboard />}/>
                 {/* Otras rutas */}
             </Routes>
         </Router>
