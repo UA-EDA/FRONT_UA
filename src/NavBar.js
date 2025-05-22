@@ -4,11 +4,17 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMagnifyingGlass, faUser } from "@fortawesome/free-solid-svg-icons";
 import { Link, useNavigate } from "react-router-dom";
 import { getValidateToken } from "./services/apiService";
+import { useContext } from "react";
+import LangContext from "./LangContext";
+import translations from "./translations";
 
 
 const NavBar = () => {
   const navigate = useNavigate();
   const [isAuth, setIsAuth] = useState(false);
+
+  const { lang } = useContext(LangContext);
+  const t = translations[lang];
 
   let nombre = '';
 
@@ -43,18 +49,20 @@ const NavBar = () => {
 
       <div className="botones_nav">
         <button className="categorias" onClick={() => navigate("/categories")}>
-          Categorías
+          {t.navbar.categories}
         </button>
+
         <button className="mis_assets" onClick={() => navigate("/asset/upload")}>
-          Publicar
+          {t.navbar.publish}
         </button>
+
       </div>
 
       <form>
         <input
           name="filtro"
           type="text"
-          placeholder="Buscar..."
+          placeholder={t.navbar.search_placeholder}
           style={{
             color: 'white',
             width: '400px'      // aquí defines el ancho
@@ -67,19 +75,19 @@ const NavBar = () => {
 
       {/* Renderizado condicional de los botones de sesión */}
       <div className="login-container">
-      {isAuth ? (
-  <>
-    <Link to="/dashboard-usuario" className="login-link">
-      {nombre} <FontAwesomeIcon icon={faUser} />
-    </Link> 
-  </>
-) : (
-  <Link to="/auth/login" className="login-link">
-    Iniciar Sesión <FontAwesomeIcon icon={faUser} />
-  </Link>
-)}
+        {isAuth ? (
+          <>
+            <Link to="/dashboard-usuario" className="login-link">
+              {nombre} <FontAwesomeIcon icon={faUser} />
+            </Link>
+          </>
+        ) : (
+          <Link to="/auth/login" className="login-link">
+            {t.navbar.login} <FontAwesomeIcon icon={faUser} />
+          </Link>
+        )}
 
-</div>
+      </div>
 
     </nav>
   );
