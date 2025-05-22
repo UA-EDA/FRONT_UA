@@ -35,9 +35,9 @@ const Contenedor = ({ titulo, assets }) => {
           <div className="asset-list">
             {visibleAssets.map((asset) => (
               <div className="asset" key={asset.id /* o asset._id */}>
-                <a href={`/asset-view?id=${asset._id}`}>
+                <div onClick={() => navigate(`/asset-view?id=${asset._id}`)}>
                   <img src={asset.portada} alt={asset.title} />
-                </a>
+                </div>
                 <h3 title={asset.title}>{asset.title}</h3>
                 <h3>{asset.nombre}</h3>
                 <p>Por {asset.autor?.nombre_completo ?? "Autor desconocido"}</p>
