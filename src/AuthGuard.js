@@ -6,7 +6,16 @@ const AuthGuard = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    const token = sessionStorage.getItem('token');
+    let token = '';
+    if (typeof window !== 'undefined') {
+      // El código que usa localStorage va aquí
+      // Ejemplo: localStorage.setItem('clave', 'valor');
+      if (localStorage.getItem('token')) {
+        token = localStorage.getItem('token');
+        // Hacer algo con el valor en localStorage
+      }
+    }
+   
     if (!token) {
       // Si no hay token, redirige
       navigate('/auth/login', { replace: true });
