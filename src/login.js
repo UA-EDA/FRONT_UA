@@ -79,7 +79,7 @@ const Login = () => {
         </div>
 
         <div className="text-center mb-3">
-          <a href="/auth/register" className="text-primary text-decoration-none">
+          <a onClick={() => navigate("/auth/register")} className="text-primary text-decoration-none">
             Olvidaste tu contraseña
           </a>
         </div>
@@ -89,7 +89,7 @@ const Login = () => {
         </button>
 
         <div className="text-center mt-3">
-          <a href="/auth/register" className="text-primary text-decoration-none">
+          <a onClick={() => navigate("/auth/register")} className="text-primary text-decoration-none">
             No tienes cuenta, crea una
           </a>
         </div>
