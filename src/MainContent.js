@@ -4,8 +4,10 @@ import { faChevronLeft, faChevronRight } from "@fortawesome/free-solid-svg-icons
 import "./style.css";
 import { getAssets } from "./services/apiService";
 import { getData } from "./services/apiService";
+import { useNavigate } from 'react-router-dom';
 
 const Contenedor = ({ titulo, assets }) => {
+  const navigate = useNavigate();
   const [currentPage, setCurrentPage] = useState(0);
   const itemsPerPage = 4;
   const maxPage = Math.floor((assets.length - 1) / itemsPerPage);
