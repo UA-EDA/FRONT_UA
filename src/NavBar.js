@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import "./style.css"; // Importa los estilos
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faMagnifyingGlass, faUser, faSignOutAlt } from "@fortawesome/free-solid-svg-icons";
+import { faMagnifyingGlass, faUser } from "@fortawesome/free-solid-svg-icons";
 import { Link, useNavigate } from "react-router-dom";
 import { getValidateToken } from "./services/apiService";
 
@@ -34,12 +34,6 @@ const NavBar = () => {
 
   }, []);
 
-  const handleLogout = () => {
-    localStorage.removeItem('token');
-    localStorage.removeItem('nombre');
-    setIsAuth(false);
-    navigate('/auth/login', { replace: true });
-  };
 
   return (
     <nav class="nav-bar">
