@@ -8,10 +8,22 @@ import { getValidateToken } from "./services/apiService";
 const NavBar = () => {
   const navigate = useNavigate();
   const [isAuth, setIsAuth] = useState(false);
-  const nombre = sessionStorage.getItem('nombre');
+  let nombre = '';
+  let token = '';
+
+  if (typeof window !== 'undefined') {
+    // El código que usa localStorage va aquí
+    // Ejemplo: localStorage.setItem('clave', 'valor');
+    if (localStorage.getItem('nombre') && localStorage.getItem('token')) {
+      nombre = localStorage.getItem('nombre');
+      token = localStorage.getItem('token');
+        // Hacer algo con el valor en localStorage
+    }
+  }
+
 
   useEffect(() => {
-    const token = sessionStorage.getItem('token');
+ 
     if (!token) {
       setIsAuth(false);
       return;
@@ -22,11 +34,11 @@ const NavBar = () => {
         navigate('/auth/login', { replace: true });
       }
     }).catch(() => navigate('/auth/login', { replace: true }));
-  }, []);
+  }, );
 
   const handleLogout = () => {
-    sessionStorage.removeItem('token');
-    sessionStorage.removeItem('nombre');
+    localStorage.removeItem('token');
+    localStorage.removeItem('nombre');
     setIsAuth(false);
     navigate('/auth/login', { replace: true });
   };
