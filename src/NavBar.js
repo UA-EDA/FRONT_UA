@@ -10,17 +10,17 @@ const NavBar = () => {
   const navigate = useNavigate();
   const [isAuth, setIsAuth] = useState(false);
 
-  let token = '';
   let nombre = '';
 
   useEffect(() => {
     if (typeof window !== 'undefined') {
       // El código que usa localStorage va aquí
       // Ejemplo: localStorage.setItem('clave', 'valor');
-      if (localStorage.getItem('nombre') && localStorage.getItem('token')) {
+      if (localStorage.getItem('nombre') ) {
         nombre = localStorage.getItem('nombre');
-        token = localStorage.getItem('token');
-          // Hacer algo con el valor en localStorage
+        
+
+        // Hacer algo con el valor en localStorage
       }
     }
 
