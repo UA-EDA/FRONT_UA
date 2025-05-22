@@ -8,9 +8,11 @@ import LangContext from "./LangContext";
 import translations from "./translations";
 
 
+import useTema from './useTema';
 
 
 const UploadAsset = () => {
+    useTema();
     const navigate = useNavigate();
     const [nombre, setNombre] = useState("");
     const [descripcion, setDescripcion] = useState("");

@@ -102,3 +102,85 @@
   background-color: #3a3a3a;
   border-radius: 30px;
 }
+
+/* MODO CLARO para Categories */
+
+body.modo-claro .categories-container {
+  
+  color: #222;               /* texto oscuro */
+}
+
+body.modo-claro .categories-title {
+  color: #111;
+  background-color: white;
+}
+
+body.modo-claro .categories-buttons {
+  margin-bottom: 1rem;
+}
+
+body.modo-claro .category-btn {
+  background-color: #ffffff;
+  color: #222;
+  border: 1px solid #ccc;
+  padding: 0.5rem 1rem;
+  margin-right: 0.5rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+body.modo-claro .category-btn:hover {
+  background-color: #e0e0e0;
+}
+
+body.modo-claro .category-btn.active {
+  background-color: #222;
+  color: #fff;
+  border-color: #222;
+}
+
+body.modo-claro .categories-content {
+  background-color: #fff;
+  padding: 1rem;
+  border-radius: 6px;
+  box-shadow: 0 0 8px rgba(0,0,0,0.05);
+}
+
+body.modo-claro .categories-assets {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+body.modo-claro .asset-card {
+  background-color: #fefefe;
+  border: 1px solid #ddd;
+
+}
+
+body.modo-claro .asset-card:hover {
+  box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+}
+
+body.modo-claro .asset-card img {
+  max-width: 100%;
+  border-radius: 4px;
+  margin-bottom: 0.5rem;
+}
+
+body.modo-claro .asset-card h3 {
+  margin: 0 0 0.25rem 0;
+  color: #111;
+}
+
+body.modo-claro .asset-card p {
+  margin: 0;
+  color: #555;
+}
+
+body.modo-claro .no-assets-message {
+  color: #000;
+  font-style: italic;
+  background-color: white;
+}
+
