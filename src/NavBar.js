@@ -3,38 +3,32 @@ import "./style.css"; // Importa los estilos
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMagnifyingGlass, faUser, faSignOutAlt } from "@fortawesome/free-solid-svg-icons";
 import { Link, useNavigate } from "react-router-dom";
-import { getValidateToken } from "./services/apiService";
 
 const NavBar = () => {
   const navigate = useNavigate();
   const [isAuth, setIsAuth] = useState(false);
+
+  let token = '';
   let nombre = '';
-  let token;
-
-  if (typeof window !== 'undefined') {
-    // El código que usa localStorage va aquí
-    // Ejemplo: localStorage.setItem('clave', 'valor');
-    if (localStorage.getItem('nombre') && localStorage.getItem('token')) {
-      nombre = localStorage.getItem('nombre');
-      token = localStorage.getItem('token');
-        // Hacer algo con el valor en localStorage
-    }
-  }
-
 
   useEffect(() => {
- 
-    if (!token) {
-      setIsAuth(false);
-      return;
+    if (typeof window !== 'undefined') {
+      // El código que usa localStorage va aquí
+      // Ejemplo: localStorage.setItem('clave', 'valor');
+      if (localStorage.getItem('nombre') && localStorage.getItem('token')) {
+        nombre = localStorage.getItem('nombre');
+        token = localStorage.getItem('token');
+          // Hacer algo con el valor en localStorage
+      }
     }
 
     getValidateToken('/auth/validate').then(x => {
-      if (x.status !== 200) {
-        navigate('/auth/login', { replace: true });
+      if (x.status === 200) {
+        setIsAuth(res.status === 200);
       }
-    }).catch(() => navigate('/auth/login', { replace: true }));
-  }, );
+    }).catch(() => setIsAuth(false));
+
+  }, []);
 
   const handleLogout = () => {
     localStorage.removeItem('token');
