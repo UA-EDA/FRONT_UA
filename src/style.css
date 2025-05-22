@@ -1109,22 +1109,7 @@ body.modo-claro a.text-primary:hover {
   
 
 
-/* Mostrar/Ocultar botón hamburguesa */
-.menu-toggle {
-  display: none;
-  font-size: 26px;
-  color: white;
-  cursor: pointer;
-  margin-left: auto;
-}
 
-/* Contenedor de los elementos del menú */
-.menu-items {
-  display: flex;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 10px;
-}
 @media (max-width: 768px) {
   nav {
     flex-wrap: wrap;
@@ -1176,17 +1161,29 @@ body.modo-claro a.text-primary:hover {
   .botones_nav {
     display: flex;
     flex-direction: row;
-    justify-content: center;
-    gap: 10px;
-    margin-left: 0;
-    padding: 0 20px;
-    align-items: center; /* para que todos estén alineados verticalmente */
+    justify-content: space-between;
+    align-items: center;
+    gap: 6px;
+    padding: 0 10px;
+    flex-wrap: nowrap;       
+    overflow-x: hidden;     
   }
+  
+  .botones_nav button,
+  .botones_nav .usuario {
+    font-size: 13px;
+    padding: 6px 10px;
+    white-space: nowrap;    
+    flex-shrink: 1;         
+    min-width: 0;             
+    max-width: 100%;         
+  }
+  
 
   /* Opcional: estilo para el botón/elemento usuario */
   .botones_nav .usuario {
     /* ejemplo */
-    padding: 5px 10px;
+    padding: 0px 10px;
     border-radius: 5px;
     background-color: #666;
     color: white;
@@ -1253,12 +1250,15 @@ body.modo-claro a.text-primary:hover {
   }
 
   .titulo-seccion {
-    font-size: 18px;
-    padding: 8px 15px;
-    margin-left: 15px;
-    display: block;
-    width: fit-content;
+    font-size: clamp(12px, 4vw, 18px);
+    padding: 8px 10px;
+    margin: 0 0 10px 0;
+    text-align: center;
+    white-space: normal;
+    overflow: visible;
   }
+  
+  
 
   .asset-list {
     flex-wrap: nowrap;

@@ -215,18 +215,26 @@ body.modo-claro .no-assets-message {
     border-radius: 20px;
   }
 
-  .categories-assets {
-    gap: 12px;
-    justify-content: center;
+  @media (max-width: 600px) {
+    .categories-assets {
+      display: flex;          
+      flex-wrap: nowrap;      
+      overflow-x: auto;      
+      gap: 12px;
+      padding-bottom: 10px;    
+      scroll-snap-type: x mandatory;
+    }
+  
+    .asset-card {
+      flex: 0 0 auto;            /* que no se encoja ni crezca */
+      scroll-snap-align: center; /* opcional: para snap */
+      width: 150px;
+      height: 180px;
+      border-radius: 20px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.5);
+    }
   }
-
-  .asset-card {
-    width: 150px;
-    height: 180px;
-    border-radius: 20px;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.5);
-  }
-
+  
   .asset-card img {
     height: 65%;
     border-radius: 20px 20px 0 0;

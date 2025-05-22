@@ -6,11 +6,6 @@ import { useNavigate } from 'react-router-dom';
 import { useContext } from "react";
 import LangContext from "./LangContext";
 import translations from "./translations";
-<<<<<<< HEAD
-
-
-=======
->>>>>>> ecd9c60 (Diseño responsive para moviles)
 import useTema from './useTema';
 
 
