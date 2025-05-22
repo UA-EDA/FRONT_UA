@@ -72,15 +72,20 @@ const NavBar = () => {
       </form>
 
       {/* Renderizado condicional de los botones de sesión */}
+      <div className="login-container">
       {isAuth ? (
-        <Link to="/auth/login" className="login-link" onClick={handleLogout}>
-          Cerrar Sessión ({nombre}) <FontAwesomeIcon icon={faSignOutAlt} />
-        </Link>
-      ) : (
-        <Link to="/auth/login" className="login-link">
-          Iniciar Sesión <FontAwesomeIcon icon={faUser} />
-        </Link>
-      )}
+  <>
+    <Link to="/dashboard-usuario" className="login-link">
+      {nombre} <FontAwesomeIcon icon={faUser} />
+    </Link> 
+  </>
+) : (
+  <Link to="/auth/login" className="login-link">
+    Iniciar Sesión <FontAwesomeIcon icon={faUser} />
+  </Link>
+)}
+
+</div>
 
     </nav>
   );
