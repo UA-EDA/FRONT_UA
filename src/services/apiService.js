@@ -2,11 +2,12 @@ import axios from "axios";
 
 //const API_BASE_URL = "https://bck-ua.onrender.com";
 const API_BASE_URL = "http://localhost:8080";
+let token = '';
 if (typeof window !== 'undefined') {
   // El código que usa localStorage va aquí
   // Ejemplo: localStorage.setItem('clave', 'valor');
   if (localStorage.getItem('token')) {
-    let token = sessionStorage.getItem('token');
+    token = sessionStorage.getItem('token');
     // Hacer algo con el valor en localStorage
   }
 }
