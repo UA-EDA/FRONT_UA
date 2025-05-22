@@ -267,6 +267,35 @@ form input:focus {
 }
 
 /* ======== DASHBOARD ======== */
+.botones-idiomas {
+  max-height: 400px;
+  overflow-y: auto;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* centrado horizontal */
+  gap: 16px;
+  padding: 10px 0;
+}
+
+.botones-idiomas::-webkit-scrollbar {
+  display: none;
+}
+
+.botones-idiomas .opcion-btn {
+  width: 80%;
+  max-width: 300px;
+  font-size: 18px;
+  padding: 14px 20px;
+  border-radius: 50px;
+  text-align: center;
+  justify-content: center;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
 .dashboard-container {
   padding-bottom: 70px;
 }
@@ -320,19 +349,6 @@ form input:focus {
 
 .dashboard-contenido h3 {
   color: white;
-}
-
-.botones-idiomas {
-  max-height: 400px;
-  overflow-y: auto;
-  scrollbar-width: none;
-  /* Firefox */
-  -ms-overflow-style: none;
-  /* IE 10+ */
-}
-
-.botones-idiomas::-webkit-scrollbar {
-  display: none;
 }
 
 /* ======== CONFIGURACIÓN ======== */

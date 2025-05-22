@@ -6,9 +6,14 @@ import './UserDashboard.css';
 import { useContext } from "react";
 import LangContext from "./LangContext";
 import translations from "./translations";
-import languages from './languages';
+import languages from './languages'; // asegúrate de tener la ruta correcta
+
+import useTema from './useTema';
 
 const UserDashboard = () => {
+
+  useTema();
+
   const navigate = useNavigate();
   const [nombre, setNombre] = useState('');
   const [seccionActiva, setSeccionActiva] = useState('assets');
@@ -23,6 +28,10 @@ const UserDashboard = () => {
   };
 
 
+  // Inicializa modoClaro y fuenteGrande leyendo localStorage directamente
+  const [modoClaro, setModoClaro] = useState(() => localStorage.getItem('modoClaro') === 'true');
+  const [fuenteGrande, setFuenteGrande] = useState(() => localStorage.getItem('fuenteGrande') === 'true');
+
   useEffect(() => {
     const token = localStorage.getItem('token');
     const userName = localStorage.getItem('nombre');
@@ -34,11 +43,29 @@ const UserDashboard = () => {
     }
   }, [navigate]);
 
-  // 🔐 Función para cerrar sesión
+  // Aplica las clases CSS cada vez que cambia modoClaro
+  useEffect(() => {
+    document.body.classList.toggle('modo-claro', modoClaro);
+    document.body.classList.toggle('modo-oscuro', !modoClaro);
+    localStorage.setItem('modoClaro', modoClaro);
+  }, [modoClaro]);
+
+  // Aplica clases y guarda fuenteGrande
+  useEffect(() => {
+    document.body.classList.toggle('fuente-grande', fuenteGrande);
+    localStorage.setItem('fuenteGrande', fuenteGrande);
+  }, [fuenteGrande]);
+
+  const cambiarAModoClaro = () => setModoClaro(true);
+  const cambiarAModoOscuro = () => setModoClaro(false);
+  const activarFuenteGrande = () => setFuenteGrande(true);
+  const activarFuenteNormal = () => setFuenteGrande(false);
+
   const cerrarSesion = () => {
     localStorage.removeItem('token');
     localStorage.removeItem('nombre');
     window.location.href = '/';
+    navigate('/');
   };
 
   const renderConfiguracionContenido = () => {
@@ -60,9 +87,7 @@ const UserDashboard = () => {
                   <td>
                     <div className="celda-contenido">
                       {nombre}
-                      <button className="editar-btn">
-                        <FontAwesomeIcon icon={faPen} />
-                      </button>
+                      <button className="editar-btn"><FontAwesomeIcon icon={faPen} /></button>
                     </div>
                   </td>
                 </tr>
@@ -71,9 +96,7 @@ const UserDashboard = () => {
                   <td>
                     <div className="celda-contenido">
                       usuario@example.com
-                      <button className="editar-btn">
-                        <FontAwesomeIcon icon={faPen} />
-                      </button>
+                      <button className="editar-btn"><FontAwesomeIcon icon={faPen} /></button>
                     </div>
                   </td>
                 </tr>
@@ -82,9 +105,7 @@ const UserDashboard = () => {
                   <td>
                     <div className="celda-contenido">
                       ********
-                      <button className="editar-btn">
-                        <FontAwesomeIcon icon={faPen} />
-                      </button>
+                      <button className="editar-btn"><FontAwesomeIcon icon={faPen} /></button>
                     </div>
                   </td>
                 </tr>
@@ -110,7 +131,14 @@ const UserDashboard = () => {
           </div>
         );
       case 'tema':
-        return <div className="configuracion-tema"></div>;
+        return (
+          <div className="configuracion-tema">
+            <button className="opcion-btn" onClick={cambiarAModoOscuro}>Modo Oscuro</button>
+            <button className="opcion-btn" onClick={cambiarAModoClaro}>Modo Claro</button>
+            <button className="opcion-btn" onClick={activarFuenteGrande}>Fuente Grande</button>
+            <button className="opcion-btn" onClick={activarFuenteNormal}>Fuente Normal</button>
+          </div>
+        );
 
       default:
         return <p>{t.dashboard.select_option}</p>;
