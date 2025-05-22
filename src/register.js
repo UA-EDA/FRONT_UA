@@ -108,7 +108,7 @@ const Register = () => {
 
 
                 <button type="submit" className="btn btn-primary w-100">Registrarse</button>
-                <a href="/auth/login" className="d-block text-center mt-3" style={{ color: "#0094ff" }}>¿Ya tienes cuenta? Inicia sesión</a>
+                <button onClick={() => navigate("/auth/login")} className="d-block text-center mt-3 btn btn-light" style={{ color: "#0094ff" }}>¿Ya tienes cuenta? Inicia sesión</button>
             </div>
 
 
