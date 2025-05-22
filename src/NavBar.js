@@ -7,10 +7,10 @@ import { Link, useNavigate } from "react-router-dom";
 const NavBar = () => {
   const navigate = useNavigate();
   const [isAuth, setIsAuth] = useState(false);
-  const nombre = localStorage.getItem('nombre');
+  const nombre = sessionStorage.getItem('nombre');
 
   useEffect(() => {
-    const token = localStorage.getItem('token');
+    const token = sessionStorage.getItem('token');
     if (!token) {
       setIsAuth(false);
       return;
@@ -26,8 +26,8 @@ const NavBar = () => {
   }, []);
 
   const handleLogout = () => {
-    localStorage.removeItem('token');
-    localStorage.removeItem('nombre');
+    sessionStorage.removeItem('token');
+    sessionStorage.removeItem('nombre');
     setIsAuth(false);
     navigate('/auth/login', { replace: true });
   };
