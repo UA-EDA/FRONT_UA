@@ -56,6 +56,35 @@ const translations = {
       photo: "Foto de perfil",
       submit: "Registrarse",
       have_account: "¿Ya tienes cuenta? Inicia sesión"
+    },
+
+    upload: {
+      title: "Subir nuevo asset",
+      asset_name: "Nombre del asset",
+      asset_name_placeholder: "Ej: Modelo 3D, icono, textura...",
+      description: "Descripción",
+      description_placeholder: "Describe tu asset...",
+      category: "Categoría",
+      select_category: "Seleccionar una categoría",
+      tags: "Etiquetas",
+      tags_placeholder: "Star Wars, Videojuegos...",
+      file: "Archivo",
+      cover: "Portada",
+      submit: "Subir",
+      loading: "Subiendo..."
+    },
+
+    asset: {
+      by: "Por",
+      category: "CATEGORÍA",
+      tags: "ETIQUETAS",
+      details: "Detalles",
+      date: "Fecha de publicación",
+      software: "Versión de software",
+      models: "Número de modelos",
+      likes: "Likes",
+      downloads: "Número de descargas",
+      download: "Descargar Asset"
     }
 
   },
@@ -114,7 +143,37 @@ const translations = {
       photo: "Profile photo",
       submit: "Register",
       have_account: "Already have an account? Log in"
+    },
+
+    upload: {
+      title: "Upload new asset",
+      asset_name: "Asset name",
+      asset_name_placeholder: "e.g. 3D model, icon, texture...",
+      description: "Description",
+      description_placeholder: "Describe your asset...",
+      category: "Category",
+      select_category: "Select a category",
+      tags: "Tags",
+      tags_placeholder: "Star Wars, Videogames...",
+      file: "File",
+      cover: "Cover",
+      submit: "Upload",
+      loading: "Uploading..."
+    },
+
+    asset: {
+      by: "By",
+      category: "CATEGORY",
+      tags: "TAGS",
+      details: "Details",
+      date: "Date published",
+      software: "Software version",
+      models: "Number of models",
+      likes: "Likes",
+      downloads: "Number of downloads",
+      download: "Download Asset"
     }
+
   }
 };
 

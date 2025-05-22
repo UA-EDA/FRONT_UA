@@ -3,6 +3,9 @@ import React, { useState } from "react";
 import { postData } from './services/apiService';
 import Swal from 'sweetalert2';
 import { useNavigate } from 'react-router-dom';
+import { useContext } from "react";
+import LangContext from "./LangContext";
+import translations from "./translations";
 
 
 
@@ -17,6 +20,9 @@ const UploadAsset = () => {
     const [portada, setPortada] = useState("");
 
     const [error, setError] = useState(""); // Error de validación
+
+    const { lang } = useContext(LangContext);
+    const t = translations[lang];
 
 
     const handleSubmit = async (e) => {
@@ -97,16 +103,24 @@ const UploadAsset = () => {
                     boxShadow: "0 0 10px rgba(0, 0, 0, 0.5)",
                     width: "500px"
                 }}>
-                    <h2 className="text-center text-white">Sube tu Asset</h2>
+                    <h2 className="text-center text-white fw-bold mb-3">{t.upload.title}</h2>
                     <div className="mb-3">
-                        <label className="form-label text-white">Nombre del asset</label>
-                        <input type="text" className="form-control" placeholder="Nombre del asset..." required value={nombre} onChange={(e) => setNombre(e.target.value)} />
+                        <label className="form-label text-white">{t.upload.asset_name}</label>
+                        <input
+                            type="text"
+                            className="form-control"
+                            placeholder={t.upload.asset_name_placeholder}
+                            required
+                            value={nombre}
+                            onChange={(e) => setNombre(e.target.value)}
+                        />
                     </div>
                     <div className="mb-3">
-                        <label className="form-label text-white">Descripción del asset</label>
+                        <label className="form-label text-white">{t.upload.description}</label>
+                        <label className="form-label text-white">{t.upload.description}</label>
                         <textarea
                             className="form-control"
-                            placeholder="Descripción..."
+                            placeholder={t.upload.description_placeholder}
                             required
                             value={descripcion}
                             onChange={(e) => setDescripcion(e.target.value)}
@@ -119,9 +133,9 @@ const UploadAsset = () => {
                         />
                     </div>
                     <div className="mb-3">
-                        <label className="form-label text-white">Categorías</label>
-                        <select id="tipo" name="tipo" className="form-control" required value={tipo} onChange={(e) => setTipo(e.target.value)}>
-                            <option value="" disabled hidden>Seleccionar una categoría</option>
+                        <label className="form-label text-white">{t.upload.category}</label>
+                        <select>
+                            <option value="" disabled hidden>{t.upload.select_category}</option>
                             <option value="3D">3D</option>
                             <option value="2D">2D</option>
                             <option value="AUDIO">AUDIO</option>
@@ -129,24 +143,34 @@ const UploadAsset = () => {
                             <option value="SCRIPT">SCRIPT</option>
                             <option value="IMAGE">IMAGE</option>
                         </select>
+
                     </div>
                     <div className="mb-3">
-                        <label className="form-label text-white">Etiquetas</label>
-                        <input type="text" className="form-control" placeholder="Star Wars, Videojuegos,..." required value={categories} onChange={(e) => setCategories(e.target.value)} />
+                        <label className="form-label text-white">{t.upload.tags}</label>
+                        <input
+                            type="text"
+                            className="form-control"
+                            placeholder={t.upload.tags_placeholder}
+                            required
+                            value={categories}
+                            onChange={(e) => setCategories(e.target.value)}
+                        />
                         {error && <div className="text-danger mt-1">{error}</div>}
                     </div>
                     <div className="mb-3">
-                        <label className="form-label text-white">Archivo</label>
+                        <label className="form-label text-white">{t.upload.file}</label>
                         <input type="file" className="form-control" onChange={changeImage} required multiple />
                     </div>
                     <div className="mb-3">
-                        <label className="form-label text-white">Portada</label>
+                        <label className="form-label text-white">{t.upload.cover}</label>
                         <input type="file" accept="image/*" className="form-control" onChange={changePortada} required multiple />
                     </div>
                     <div className="mb-3 justify-content">
                         {portada && <img src={portada} alt="Vista previa" style={{ width: '300px', height: '150px' }} />}
                     </div>
-                    <button type="submit" className="btn btn-primary w-100">Subir</button>
+                    <button type="submit" className="btn btn-primary w-100">
+                        {t.upload.submit}
+                    </button>
                 </div>
             </form>
         </div >
