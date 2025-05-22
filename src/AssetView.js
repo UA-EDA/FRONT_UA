@@ -1,8 +1,12 @@
 import React, { useState, useEffect } from "react";
-import {  useLocation } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 import { getData, postData } from './services/apiService';
 import Swal from 'sweetalert2';
 import './AssetView.css';
+
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faThumbsUp as solidThumbsUp, faThumbsDown as solidThumbsDown } from '@fortawesome/free-solid-svg-icons';
+import { faThumbsUp as regularThumbsUp, faThumbsDown as regularThumbsDown } from '@fortawesome/free-regular-svg-icons';
 
 function useQuery() {
     return new URLSearchParams(useLocation().search);
@@ -11,9 +15,10 @@ function useQuery() {
 const AssetView = () => {
     const query = useQuery();
     const id = query.get("id");
-   
+
     const [asset, setAsset] = useState(null);
     const [loading, setLoading] = useState(true);
+    const [userVote, setUserVote] = useState(null); // null, true (like), false (dislike)
 
     useEffect(() => {
         getData(`asset/${id}`)
@@ -29,7 +34,25 @@ const AssetView = () => {
                 });
             })
             .finally(() => setLoading(false));
+
+        getData(`asset/like?assetId=${id}`)
+            .then(response => {
+                const voto = response.resultado;
+                if (voto != null) { // esto cubre undefined y null
+                    setUserVote(voto);
+                }
+            })
+            .catch(err => {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Error al recuperar valoraciones',
+                    text: err.message || 'No se han podido obtener los datos.'
+                });
+            })
+            .finally(() => setLoading(false));
+
     }, [id]);
+
 
     if (loading) return <div className="av-loading">Cargando…</div>;
     if (!asset) return <div className="av-error">No se encontró el asset.</div>;
@@ -74,6 +97,13 @@ const AssetView = () => {
     const handleScore = async (isLiked) => {
         try {
             await postData('/asset/like', { id, isLiked });
+            if (isLiked === userVote) {
+                isLiked = !isLiked;
+                setUserVote(undefined);
+            }
+            else {
+                setUserVote(isLiked);
+            }
             setAsset(prev => ({ ...prev, likes: (prev.likes || 0) + (isLiked ? 1 : -1) }));
         } catch (error) {
             console.error(error);
@@ -136,8 +166,19 @@ const AssetView = () => {
                 </div>
 
                 <li>
-                    <button class="av-like-btn" onClick={() => handleScore(true)}>👍</button>
-                    <button class="av-like-btn" onClick={() => handleScore(false)}>👎</button>
+                    <button className="av-like-btn" onClick={() => handleScore(true)}>
+                        <FontAwesomeIcon
+                            icon={userVote === false || userVote == undefined ? regularThumbsUp : solidThumbsUp}
+                            color={userVote === true || userVote == undefined ? '#0a84ff' : '#888'}
+                        />
+                    </button>
+
+                    <button className="av-like-btn" onClick={() => handleScore(false)}>
+                        <FontAwesomeIcon
+                            icon={userVote === true || userVote == undefined ? regularThumbsDown : solidThumbsDown}
+                            color={userVote === false || userVote == undefined ? '#ff3b30' : '#888'}
+                        />
+                    </button>
                 </li>
 
                 {/* Sección de Descarga en su propia sección abajo de los detalles */}
