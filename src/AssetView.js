@@ -56,6 +56,20 @@ const AssetView = () => {
     const { lang } = React.useContext(LangContext);
     const t = translations[lang];
 
+    const loadComentarios = React.useCallback(async () => {
+        try {
+            const response = await getData(`asset/todos-comentarios/${id}`);
+            if (response && response.resultado) {
+                setComentarios(response.resultado);
+            } else {
+                setComentarios([]);
+            }
+        } catch (error) {
+            console.error(error);
+            Swal.fire('Error', 'No se pudieron cargar los comentarios', 'error');
+        }
+    }, [id]);
+
     useEffect(() => {
         setLoading(true);
 
@@ -88,24 +102,10 @@ const AssetView = () => {
                 });
             });
 
-        // Cargar comentarios iniciales
         loadComentarios();
 
-    }, [id]);
+    }, [id, loadComentarios]);
 
-    const loadComentarios = async () => {
-        try {
-            const response = await getData(`asset/todos-comentarios/${id}`);
-            if (response && response.resultado) {
-                setComentarios(response.resultado);
-            } else {
-                setComentarios([]);
-            }
-        } catch (error) {
-            console.error(error);
-            Swal.fire('Error', 'No se pudieron cargar los comentarios', 'error');
-        }
-    };
 
     const handleVerMasComentarios = () => {
         setVisibleComentarios((prev) => Math.min(prev + 5, comentarios.length));
