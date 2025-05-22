@@ -3,22 +3,32 @@ import { useLocation } from 'react-router-dom';
 import { getData, postData } from './services/apiService';
 import Swal from 'sweetalert2';
 import './AssetView.css';
+import useTema from './useTema';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faThumbsUp as solidThumbsUp, faThumbsDown as solidThumbsDown } from '@fortawesome/free-solid-svg-icons';
 import { faThumbsUp as regularThumbsUp, faThumbsDown as regularThumbsDown } from '@fortawesome/free-regular-svg-icons';
+
+import { useContext } from "react";
+import LangContext from "./LangContext";
+import translations from "./translations";
 
 function useQuery() {
     return new URLSearchParams(useLocation().search);
 }
 
 const AssetView = () => {
+
+    useTema(); 
     const query = useQuery();
     const id = query.get("id");
 
     const [asset, setAsset] = useState(null);
     const [loading, setLoading] = useState(true);
     const [userVote, setUserVote] = useState(null); // null, true (like), false (dislike)
+
+    const { lang } = useContext(LangContext);
+    const t = translations[lang];
 
     useEffect(() => {
         getData(`asset/${id}`)
@@ -134,15 +144,15 @@ const AssetView = () => {
             <aside className="av-sidebar">
                 <div className="card av-header-card">
                     <h2>{asset.nombre.toUpperCase()}</h2>
-                    <p>Por {asset.autor?.nombre_completo}</p>
+                    <p>{t.asset.by} {asset.autor?.nombre_completo}</p>
                     <div className="av-category-row">
-                        <p>CATEGORÍA</p>
+                        <p>{t.asset.category}</p>
                         <div className="av-tags">
                             <span key={asset.tipo} className="cat">{asset.tipo}</span>
                         </div>
                     </div>
                     <div className="av-category-row">
-                        <p>ETIQUETAS</p>
+                        <p>{t.asset.tags}</p>
                         <div className="av-tags">
                             {Array.isArray(asset.categorias) && asset.categorias.map(cat => (
                                 <span key={cat} className="tag">{cat}</span>
@@ -153,15 +163,15 @@ const AssetView = () => {
                 </div>
 
                 <div className="card av-details-card">
-                    <h3>Detalles</h3>
+                    <h3>{t.asset.details}</h3>
                     <ul>
-                        <li><strong>Fecha de publicación:</strong> {new Date(asset.fecha_alta).toLocaleDateString()}</li>
-                        <li><strong>Versión de software:</strong> {asset.version_software && asset.version_software !== "" ? (Array.isArray(asset.version_software) ? asset.version_software.join(', ') : asset.version_software) : "1.0.0"}</li>
+                        <li><strong>{t.asset.date}:</strong> {new Date(asset.fecha_alta).toLocaleDateString()}</li>
+                        <li><strong>{t.asset.software}:</strong> {asset.version_software && asset.version_software !== "" ? (Array.isArray(asset.version_software) ? asset.version_software.join(', ') : asset.version_software) : "1.0.0"}</li>
                         {asset.numero_modelos && asset.numero_modelos !== "" && (
-                            <li><strong>Número de modelos:</strong> {asset.numero_modelos}</li>
+                            <li><strong>{t.asset.models}:</strong> {asset.numero_modelos}</li>
                         )}
-                        <li><strong>Likes:</strong> {asset.likes || 0}</li>
-                        <li><strong>Número de descargas:</strong> {asset.num_descargas || 0}</li>
+                        <li><strong>{t.asset.likes}:</strong> {asset.likes || 0}</li>
+                        <li><strong>{t.asset.downloads}:</strong> {asset.num_descargas || 0}</li>
                     </ul>
                 </div>
 
@@ -183,7 +193,9 @@ const AssetView = () => {
 
                 {/* Sección de Descarga en su propia sección abajo de los detalles */}
                 <div className="av-download-section">
-                    <button onClick={handleDownload} className="av-download-btn">Descargar Asset</button>
+                    <button onClick={handleDownload} className="av-download-btn">
+                        {t.asset.download}
+                    </button>
                 </div>
             </aside>
         </div>

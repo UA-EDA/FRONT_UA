@@ -1,5 +1,3 @@
-// src/translations.js
-
 const translations = {
   es: {
     navbar: {
@@ -56,6 +54,35 @@ const translations = {
       photo: "Foto de perfil",
       submit: "Registrarse",
       have_account: "¿Ya tienes cuenta? Inicia sesión"
+    },
+
+    upload: {
+      title: "Subir nuevo asset",
+      asset_name: "Nombre del asset",
+      asset_name_placeholder: "Ej: Modelo 3D, icono, textura...",
+      description: "Descripción",
+      description_placeholder: "Describe tu asset...",
+      category: "Categoría",
+      select_category: "Seleccionar una categoría",
+      tags: "Etiquetas",
+      tags_placeholder: "Star Wars, Videojuegos...",
+      file: "Archivo",
+      cover: "Portada",
+      submit: "Subir",
+      loading: "Subiendo..."
+    },
+
+    asset: {
+      by: "Por",
+      category: "CATEGORÍA",
+      tags: "ETIQUETAS",
+      details: "Detalles",
+      date: "Fecha de publicación",
+      software: "Versión de software",
+      models: "Número de modelos",
+      likes: "Likes",
+      downloads: "Número de descargas",
+      download: "Descargar Asset"
     }
 
   },
@@ -114,8 +141,786 @@ const translations = {
       photo: "Profile photo",
       submit: "Register",
       have_account: "Already have an account? Log in"
+    },
+
+    upload: {
+      title: "Upload new asset",
+      asset_name: "Asset name",
+      asset_name_placeholder: "e.g. 3D model, icon, texture...",
+      description: "Description",
+      description_placeholder: "Describe your asset...",
+      category: "Category",
+      select_category: "Select a category",
+      tags: "Tags",
+      tags_placeholder: "Star Wars, Videogames...",
+      file: "File",
+      cover: "Cover",
+      submit: "Upload",
+      loading: "Uploading..."
+    },
+
+    asset: {
+      by: "By",
+      category: "CATEGORY",
+      tags: "TAGS",
+      details: "Details",
+      date: "Date published",
+      software: "Software version",
+      models: "Number of models",
+      likes: "Likes",
+      downloads: "Number of downloads",
+      download: "Download Asset"
     }
-  }
+
+  },
+
+  it: {
+    navbar: {
+      categories: "Categorie",
+      publish: "Pubblica",
+      search_placeholder: "Cerca...",
+      login: "Accedi",
+      logout: "Disconnettersi",
+      welcome: "Benvenuto"
+    },
+    dashboard: {
+      title: "Benvenuto",
+      assets: "I miei asset",
+      downloads: "Download",
+      config: "Configurazione",
+      logout: "Disconnettersi",
+      profile_settings: "Impostazioni profilo",
+      language: "Lingua",
+      theme: "Tema",
+      select_language: "Seleziona la tua lingua",
+      select_section: "Seleziona una sezione",
+      select_option: "Seleziona un'opzione",
+      select_theme: "Seleziona un tema",
+      field: "Campo",
+      value: "Valore",
+      name: "Nome",
+      email: "Email",
+      password: "Password"
+    },
+    login: {
+      title: "Accesso",
+      email: "Email",
+      password: "Password",
+      submit: "Accedi",
+      no_account: "Non hai un account? Creane uno",
+      guest_access: "Accedere senza effettuare l'accesso?",
+      email_placeholder: "esempio@esempio.com...",
+      password_placeholder: "Password...",
+      loading: "Accesso in corso..."
+    },
+    register: {
+      title: "Crea un account",
+      name: "Nome",
+      name_placeholder: "Il tuo nome",
+      email: "Email",
+      email_placeholder: "La tua email",
+      password: "Password",
+      password_placeholder: "La tua password",
+      confirm_password: "Conferma password",
+      confirm_password_placeholder: "Ripeti la password",
+      password_mismatch: "Le password non corrispondono",
+      photo: "Foto del profilo",
+      submit: "Registrati",
+      have_account: "Hai già un account? Accedi"
+    },
+    upload: {
+      title: "Carica nuovo asset",
+      asset_name: "Nome dell'asset",
+      asset_name_placeholder: "Es: Modello 3D, icona, texture...",
+      description: "Descrizione",
+      description_placeholder: "Descrivi il tuo asset...",
+      category: "Categoria",
+      select_category: "Seleziona una categoria",
+      tags: "Tag",
+      tags_placeholder: "Star Wars, Videogiochi...",
+      file: "File",
+      cover: "Copertina",
+      submit: "Carica",
+      loading: "Caricamento in corso..."
+    },
+    asset: {
+      by: "Di",
+      category: "CATEGORIA",
+      tags: "TAG",
+      details: "Dettagli",
+      date: "Data di pubblicazione",
+      software: "Versione del software",
+      models: "Numero di modelli",
+      likes: "Mi piace",
+      downloads: "Numero di download",
+      download: "Scarica Asset"
+    }
+  },
+
+  fr: {
+    navbar: {
+      categories: "Catégories",
+      publish: "Publier",
+      search_placeholder: "Rechercher...",
+      login: "Se connecter",
+      logout: "Se déconnecter",
+      welcome: "Bienvenue"
+    },
+    dashboard: {
+      title: "Bienvenue",
+      assets: "Mes assets",
+      downloads: "Téléchargements",
+      config: "Configuration",
+      logout: "Se déconnecter",
+      profile_settings: "Paramètres du profil",
+      language: "Langue",
+      theme: "Thème",
+      select_language: "Sélectionnez votre langue",
+      select_section: "Sélectionnez une section",
+      select_option: "Sélectionnez une option",
+      select_theme: "Sélectionnez un thème",
+      field: "Champ",
+      value: "Valeur",
+      name: "Nom",
+      email: "Email",
+      password: "Mot de passe"
+    },
+    login: {
+      title: "Connexion",
+      email: "Email",
+      password: "Mot de passe",
+      submit: "Se connecter",
+      no_account: "Pas de compte ? Créez-en un",
+      guest_access: "Entrer sans se connecter ?",
+      email_placeholder: "exemple@exemple.com...",
+      password_placeholder: "Mot de passe...",
+      loading: "Connexion en cours..."
+    },
+    register: {
+      title: "Créer un compte",
+      name: "Nom",
+      name_placeholder: "Votre nom",
+      email: "Email",
+      email_placeholder: "Votre email",
+      password: "Mot de passe",
+      password_placeholder: "Votre mot de passe",
+      confirm_password: "Confirmer le mot de passe",
+      confirm_password_placeholder: "Répétez le mot de passe",
+      password_mismatch: "Les mots de passe ne correspondent pas",
+      photo: "Photo de profil",
+      submit: "S'inscrire",
+      have_account: "Vous avez déjà un compte ? Connectez-vous"
+    },
+    upload: {
+      title: "Téléverser un nouvel asset",
+      asset_name: "Nom de l'asset",
+      asset_name_placeholder: "Ex: Modèle 3D, icône, texture...",
+      description: "Description",
+      description_placeholder: "Décrivez votre asset...",
+      category: "Catégorie",
+      select_category: "Sélectionner une catégorie",
+      tags: "Tags",
+      tags_placeholder: "Star Wars, Jeux vidéo...",
+      file: "Fichier",
+      cover: "Couverture",
+      submit: "Téléverser",
+      loading: "Téléversement..."
+    },
+    asset: {
+      by: "Par",
+      category: "CATÉGORIE",
+      tags: "TAGS",
+      details: "Détails",
+      date: "Date de publication",
+      software: "Version du logiciel",
+      models: "Nombre de modèles",
+      likes: "J'aime",
+      downloads: "Nombre de téléchargements",
+      download: "Télécharger l'asset"
+    }
+  },
+
+  no: {
+    navbar: {
+      categories: "Kategorier",
+      publish: "Publiser",
+      search_placeholder: "Søk...",
+      login: "Logg inn",
+      logout: "Logg ut",
+      welcome: "Velkommen"
+    },
+    dashboard: {
+      title: "Velkommen",
+      assets: "Mine eiendeler",
+      downloads: "Nedlastinger",
+      config: "Innstillinger",
+      logout: "Logg ut",
+      profile_settings: "Profilinnstillinger",
+      language: "Språk",
+      theme: "Tema",
+      select_language: "Velg ditt språk",
+      select_section: "Velg en seksjon",
+      select_option: "Velg et alternativ",
+      select_theme: "Velg et tema",
+      field: "Felt",
+      value: "Verdi",
+      name: "Navn",
+      email: "E-post",
+      password: "Passord"
+    },
+    login: {
+      title: "Innlogging",
+      email: "E-post",
+      password: "Passord",
+      submit: "Logg inn",
+      no_account: "Har du ikke konto? Opprett en",
+      guest_access: "Gå inn uten å logge inn?",
+      email_placeholder: "eksempel@eksempel.com...",
+      password_placeholder: "Passord...",
+      loading: "Logger inn..."
+    },
+    register: {
+      title: "Opprett konto",
+      name: "Navn",
+      name_placeholder: "Ditt navn",
+      email: "E-post",
+      email_placeholder: "Din e-post",
+      password: "Passord",
+      password_placeholder: "Ditt passord",
+      confirm_password: "Bekreft passord",
+      confirm_password_placeholder: "Gjenta passordet",
+      password_mismatch: "Passordene samsvarer ikke",
+      photo: "Profilbilde",
+      submit: "Registrer deg",
+      have_account: "Har du allerede en konto? Logg inn"
+    },
+    upload: {
+      title: "Last opp ny eiendel",
+      asset_name: "Navn på eiendel",
+      asset_name_placeholder: "F.eks. 3D-modell, ikon, tekstur...",
+      description: "Beskrivelse",
+      description_placeholder: "Beskriv eiendelen din...",
+      category: "Kategori",
+      select_category: "Velg en kategori",
+      tags: "Tagger",
+      tags_placeholder: "Star Wars, Videospill...",
+      file: "Fil",
+      cover: "Forside",
+      submit: "Last opp",
+      loading: "Laster opp..."
+    },
+    asset: {
+      by: "Av",
+      category: "KATEGORI",
+      tags: "TAGGER",
+      details: "Detaljer",
+      date: "Publiseringsdato",
+      software: "Programvareversjon",
+      models: "Antall modeller",
+      likes: "Likere",
+      downloads: "Antall nedlastinger",
+      download: "Last ned eiendel"
+    }
+  },
+
+  zh: {
+    navbar: {
+      categories: "类别",
+      publish: "发布",
+      search_placeholder: "搜索...",
+      login: "登录",
+      logout: "登出",
+      welcome: "欢迎"
+    },
+    dashboard: {
+      title: "欢迎",
+      assets: "我的资源",
+      downloads: "下载",
+      config: "设置",
+      logout: "登出",
+      profile_settings: "个人资料设置",
+      language: "语言",
+      theme: "主题",
+      select_language: "选择你的语言",
+      select_section: "选择一个部分",
+      select_option: "选择一个选项",
+      select_theme: "选择一个主题",
+      field: "字段",
+      value: "值",
+      name: "姓名",
+      email: "电子邮件",
+      password: "密码"
+    },
+    login: {
+      title: "登录",
+      email: "电子邮件",
+      password: "密码",
+      submit: "登录",
+      no_account: "没有账户？创建一个",
+      guest_access: "无需登录直接访问？",
+      email_placeholder: "example@example.com...",
+      password_placeholder: "密码...",
+      loading: "正在登录..."
+    },
+    register: {
+      title: "创建账户",
+      name: "姓名",
+      name_placeholder: "你的名字",
+      email: "电子邮件",
+      email_placeholder: "你的电子邮件",
+      password: "密码",
+      password_placeholder: "你的密码",
+      confirm_password: "确认密码",
+      confirm_password_placeholder: "重复密码",
+      password_mismatch: "密码不匹配",
+      photo: "个人头像",
+      submit: "注册",
+      have_account: "已有账户？请登录"
+    },
+    upload: {
+      title: "上传新资源",
+      asset_name: "资源名称",
+      asset_name_placeholder: "例如：3D模型、图标、纹理...",
+      description: "描述",
+      description_placeholder: "描述你的资源...",
+      category: "类别",
+      select_category: "选择一个类别",
+      tags: "标签",
+      tags_placeholder: "星球大战，电子游戏...",
+      file: "文件",
+      cover: "封面",
+      submit: "上传",
+      loading: "正在上传..."
+    },
+    asset: {
+      by: "由",
+      category: "类别",
+      tags: "标签",
+      details: "详情",
+      date: "发布日期",
+      software: "软件版本",
+      models: "模型数量",
+      likes: "点赞",
+      downloads: "下载次数",
+      download: "下载资源"
+    }
+  },
+
+  ko: {
+    navbar: {
+      categories: "카테고리",
+      publish: "업로드",
+      search_placeholder: "검색...",
+      login: "로그인",
+      logout: "로그아웃",
+      welcome: "환영합니다"
+    },
+    dashboard: {
+      title: "환영합니다",
+      assets: "내 자산",
+      downloads: "다운로드",
+      config: "설정",
+      logout: "로그아웃",
+      profile_settings: "프로필 설정",
+      language: "언어",
+      theme: "테마",
+      select_language: "언어 선택",
+      select_section: "섹션 선택",
+      select_option: "옵션 선택",
+      select_theme: "테마 선택",
+      field: "필드",
+      value: "값",
+      name: "이름",
+      email: "이메일",
+      password: "비밀번호"
+    },
+    login: {
+      title: "로그인",
+      email: "이메일",
+      password: "비밀번호",
+      submit: "로그인",
+      no_account: "계정이 없으신가요? 생성하세요",
+      guest_access: "로그인 없이 들어가기?",
+      email_placeholder: "example@example.com...",
+      password_placeholder: "비밀번호...",
+      loading: "로그인 중..."
+    },
+    register: {
+      title: "계정 만들기",
+      name: "이름",
+      name_placeholder: "당신의 이름",
+      email: "이메일",
+      email_placeholder: "당신의 이메일",
+      password: "비밀번호",
+      password_placeholder: "당신의 비밀번호",
+      confirm_password: "비밀번호 확인",
+      confirm_password_placeholder: "비밀번호 다시 입력",
+      password_mismatch: "비밀번호가 일치하지 않습니다",
+      photo: "프로필 사진",
+      submit: "회원가입",
+      have_account: "이미 계정이 있으신가요? 로그인"
+    },
+    upload: {
+      title: "새 자산 업로드",
+      asset_name: "자산 이름",
+      asset_name_placeholder: "예: 3D 모델, 아이콘, 텍스처...",
+      description: "설명",
+      description_placeholder: "자산에 대해 설명하세요...",
+      category: "카테고리",
+      select_category: "카테고리 선택",
+      tags: "태그",
+      tags_placeholder: "스타워즈, 비디오게임...",
+      file: "파일",
+      cover: "표지",
+      submit: "업로드",
+      loading: "업로드 중..."
+    },
+    asset: {
+      by: "작성자",
+      category: "카테고리",
+      tags: "태그",
+      details: "세부정보",
+      date: "게시일",
+      software: "소프트웨어 버전",
+      models: "모델 수",
+      likes: "좋아요",
+      downloads: "다운로드 수",
+      download: "자산 다운로드"
+    }
+  },
+
+  ja: {
+    navbar: {
+      categories: "カテゴリ",
+      publish: "公開",
+      search_placeholder: "検索...",
+      login: "ログイン",
+      logout: "ログアウト",
+      welcome: "ようこそ"
+    },
+    dashboard: {
+      title: "ようこそ",
+      assets: "マイアセット",
+      downloads: "ダウンロード",
+      config: "設定",
+      logout: "ログアウト",
+      profile_settings: "プロフィール設定",
+      language: "言語",
+      theme: "テーマ",
+      select_language: "言語を選択してください",
+      select_section: "セクションを選択",
+      select_option: "オプションを選択",
+      select_theme: "テーマを選択",
+      field: "フィールド",
+      value: "値",
+      name: "名前",
+      email: "メールアドレス",
+      password: "パスワード"
+    },
+    login: {
+      title: "ログイン",
+      email: "メールアドレス",
+      password: "パスワード",
+      submit: "ログイン",
+      no_account: "アカウントがありませんか？作成する",
+      guest_access: "ログインせずに続けますか？",
+      email_placeholder: "example@example.com...",
+      password_placeholder: "パスワード...",
+      loading: "ログイン中..."
+    },
+    register: {
+      title: "アカウント作成",
+      name: "名前",
+      name_placeholder: "あなたの名前",
+      email: "メールアドレス",
+      email_placeholder: "あなたのメールアドレス",
+      password: "パスワード",
+      password_placeholder: "あなたのパスワード",
+      confirm_password: "パスワードの確認",
+      confirm_password_placeholder: "パスワードを再入力してください",
+      password_mismatch: "パスワードが一致しません",
+      photo: "プロフィール写真",
+      submit: "登録する",
+      have_account: "すでにアカウントをお持ちですか？ログイン"
+    },
+    upload: {
+      title: "新しいアセットをアップロード",
+      asset_name: "アセット名",
+      asset_name_placeholder: "例：3Dモデル、アイコン、テクスチャ...",
+      description: "説明",
+      description_placeholder: "アセットを説明してください...",
+      category: "カテゴリ",
+      select_category: "カテゴリを選択",
+      tags: "タグ",
+      tags_placeholder: "スターウォーズ、ビデオゲーム...",
+      file: "ファイル",
+      cover: "カバー",
+      submit: "アップロード",
+      loading: "アップロード中..."
+    },
+    asset: {
+      by: "作成者",
+      category: "カテゴリ",
+      tags: "タグ",
+      details: "詳細",
+      date: "公開日",
+      software: "ソフトウェアバージョン",
+      models: "モデル数",
+      likes: "いいね",
+      downloads: "ダウンロード数",
+      download: "アセットをダウンロード"
+    }
+  },
+
+  de: {
+    navbar: {
+      categories: "Kategorien",
+      publish: "Veröffentlichen",
+      search_placeholder: "Suchen...",
+      login: "Anmelden",
+      logout: "Abmelden",
+      welcome: "Willkommen"
+    },
+    dashboard: {
+      title: "Willkommen",
+      assets: "Meine Assets",
+      downloads: "Downloads",
+      config: "Einstellungen",
+      logout: "Abmelden",
+      profile_settings: "Profileinstellungen",
+      language: "Sprache",
+      theme: "Design",
+      select_language: "Sprache auswählen",
+      select_section: "Abschnitt auswählen",
+      select_option: "Option auswählen",
+      select_theme: "Design auswählen",
+      field: "Feld",
+      value: "Wert",
+      name: "Name",
+      email: "E-Mail",
+      password: "Passwort"
+    },
+    login: {
+      title: "Anmeldung",
+      email: "E-Mail",
+      password: "Passwort",
+      submit: "Anmelden",
+      no_account: "Kein Konto? Erstelle eins",
+      guest_access: "Ohne Anmeldung fortfahren?",
+      email_placeholder: "beispiel@beispiel.com...",
+      password_placeholder: "Passwort...",
+      loading: "Anmeldung läuft..."
+    },
+    register: {
+      title: "Konto erstellen",
+      name: "Name",
+      name_placeholder: "Dein Name",
+      email: "E-Mail",
+      email_placeholder: "Deine E-Mail",
+      password: "Passwort",
+      password_placeholder: "Dein Passwort",
+      confirm_password: "Passwort bestätigen",
+      confirm_password_placeholder: "Passwort erneut eingeben",
+      password_mismatch: "Passwörter stimmen nicht überein",
+      photo: "Profilbild",
+      submit: "Registrieren",
+      have_account: "Bereits ein Konto? Anmelden"
+    },
+    upload: {
+      title: "Neues Asset hochladen",
+      asset_name: "Asset-Name",
+      asset_name_placeholder: "z. B. 3D-Modell, Icon, Textur...",
+      description: "Beschreibung",
+      description_placeholder: "Beschreibe dein Asset...",
+      category: "Kategorie",
+      select_category: "Kategorie auswählen",
+      tags: "Tags",
+      tags_placeholder: "Star Wars, Videospiele...",
+      file: "Datei",
+      cover: "Titelbild",
+      submit: "Hochladen",
+      loading: "Wird hochgeladen..."
+    },
+    asset: {
+      by: "Von",
+      category: "KATEGORIE",
+      tags: "TAGS",
+      details: "Details",
+      date: "Veröffentlichungsdatum",
+      software: "Softwareversion",
+      models: "Anzahl der Modelle",
+      likes: "Gefällt mir",
+      downloads: "Anzahl der Downloads",
+      download: "Asset herunterladen"
+    }
+  },
+
+  pl: {
+    navbar: {
+      categories: "Kategorie",
+      publish: "Opublikuj",
+      search_placeholder: "Szukaj...",
+      login: "Zaloguj się",
+      logout: "Wyloguj się",
+      welcome: "Witaj"
+    },
+    dashboard: {
+      title: "Witaj",
+      assets: "Moje zasoby",
+      downloads: "Pobrania",
+      config: "Ustawienia",
+      logout: "Wyloguj się",
+      profile_settings: "Ustawienia profilu",
+      language: "Język",
+      theme: "Motyw",
+      select_language: "Wybierz swój język",
+      select_section: "Wybierz sekcję",
+      select_option: "Wybierz opcję",
+      select_theme: "Wybierz motyw",
+      field: "Pole",
+      value: "Wartość",
+      name: "Imię",
+      email: "Email",
+      password: "Hasło"
+    },
+    login: {
+      title: "Logowanie",
+      email: "Email",
+      password: "Hasło",
+      submit: "Zaloguj się",
+      no_account: "Nie masz konta? Utwórz je",
+      guest_access: "Wejść bez logowania?",
+      email_placeholder: "przyklad@przyklad.com...",
+      password_placeholder: "Hasło...",
+      loading: "Logowanie..."
+    },
+    register: {
+      title: "Utwórz konto",
+      name: "Imię",
+      name_placeholder: "Twoje imię",
+      email: "Email",
+      email_placeholder: "Twój email",
+      password: "Hasło",
+      password_placeholder: "Twoje hasło",
+      confirm_password: "Potwierdź hasło",
+      confirm_password_placeholder: "Powtórz hasło",
+      password_mismatch: "Hasła się nie zgadzają",
+      photo: "Zdjęcie profilowe",
+      submit: "Zarejestruj się",
+      have_account: "Masz już konto? Zaloguj się"
+    },
+    upload: {
+      title: "Prześlij nowy zasób",
+      asset_name: "Nazwa zasobu",
+      asset_name_placeholder: "Np. model 3D, ikona, tekstura...",
+      description: "Opis",
+      description_placeholder: "Opisz swój zasób...",
+      category: "Kategoria",
+      select_category: "Wybierz kategorię",
+      tags: "Tagi",
+      tags_placeholder: "Star Wars, Gry wideo...",
+      file: "Plik",
+      cover: "Okładka",
+      submit: "Prześlij",
+      loading: "Przesyłanie..."
+    },
+    asset: {
+      by: "Autor",
+      category: "KATEGORIA",
+      tags: "TAGI",
+      details: "Szczegóły",
+      date: "Data publikacji",
+      software: "Wersja oprogramowania",
+      models: "Liczba modeli",
+      likes: "Polubienia",
+      downloads: "Liczba pobrań",
+      download: "Pobierz zasób"
+    }
+  },
+
+  el: {
+    navbar: {
+      categories: "Κατηγορίες",
+      publish: "Δημοσίευση",
+      search_placeholder: "Αναζήτηση...",
+      login: "Σύνδεση",
+      logout: "Αποσύνδεση",
+      welcome: "Καλωσόρισες"
+    },
+    dashboard: {
+      title: "Καλωσόρισες",
+      assets: "Τα αρχεία μου",
+      downloads: "Λήψεις",
+      config: "Ρυθμίσεις",
+      logout: "Αποσύνδεση",
+      profile_settings: "Ρυθμίσεις προφίλ",
+      language: "Γλώσσα",
+      theme: "Θέμα",
+      select_language: "Επίλεξε γλώσσα",
+      select_section: "Επίλεξε ενότητα",
+      select_option: "Επίλεξε επιλογή",
+      select_theme: "Επίλεξε θέμα",
+      field: "Πεδίο",
+      value: "Τιμή",
+      name: "Όνομα",
+      email: "Email",
+      password: "Κωδικός"
+    },
+    login: {
+      title: "Σύνδεση",
+      email: "Email",
+      password: "Κωδικός",
+      submit: "Σύνδεση",
+      no_account: "Δεν έχεις λογαριασμό; Δημιούργησε έναν",
+      guest_access: "Συνέχεια χωρίς σύνδεση;",
+      email_placeholder: "paradeigma@paradeigma.com...",
+      password_placeholder: "Κωδικός...",
+      loading: "Σύνδεση σε εξέλιξη..."
+    },
+    register: {
+      title: "Δημιουργία λογαριασμού",
+      name: "Όνομα",
+      name_placeholder: "Το όνομά σου",
+      email: "Email",
+      email_placeholder: "Το email σου",
+      password: "Κωδικός",
+      password_placeholder: "Ο κωδικός σου",
+      confirm_password: "Επιβεβαίωση κωδικού",
+      confirm_password_placeholder: "Επανέλαβε τον κωδικό",
+      password_mismatch: "Οι κωδικοί δεν ταιριάζουν",
+      photo: "Εικόνα προφίλ",
+      submit: "Εγγραφή",
+      have_account: "Έχεις ήδη λογαριασμό; Σύνδεση"
+    },
+    upload: {
+      title: "Ανέβασε νέο αρχείο",
+      asset_name: "Όνομα αρχείου",
+      asset_name_placeholder: "Π.χ. 3D μοντέλο, εικονίδιο, υφή...",
+      description: "Περιγραφή",
+      description_placeholder: "Περιέγραψε το αρχείο σου...",
+      category: "Κατηγορία",
+      select_category: "Επίλεξε κατηγορία",
+      tags: "Ετικέτες",
+      tags_placeholder: "Star Wars, Βιντεοπαιχνίδια...",
+      file: "Αρχείο",
+      cover: "Εξώφυλλο",
+      submit: "Ανέβασμα",
+      loading: "Γίνεται μεταφόρτωση..."
+    },
+    asset: {
+      by: "Από",
+      category: "ΚΑΤΗΓΟΡΙΑ",
+      tags: "ΕΤΙΚΕΤΕΣ",
+      details: "Λεπτομέρειες",
+      date: "Ημερομηνία δημοσίευσης",
+      software: "Έκδοση λογισμικού",
+      models: "Αριθμός μοντέλων",
+      likes: "Μου αρέσει",
+      downloads: "Αριθμός λήψεων",
+      download: "Λήψη αρχείου"
+    }
+  },
+
 };
 
 export default translations;
