@@ -96,7 +96,7 @@ const AssetView = () => {
 
     const handleScore = async (isLiked) => {
         try {
-            await postData('/asset/like', { id, isLiked });
+            const updatedAsset = await postData('/asset/like', { id, isLiked });
             if (isLiked === userVote) {
                 isLiked = !isLiked;
                 setUserVote(undefined);
@@ -104,7 +104,7 @@ const AssetView = () => {
             else {
                 setUserVote(isLiked);
             }
-            setAsset(prev => ({ ...prev, likes: (prev.likes || 0) + (isLiked ? 1 : -1) }));
+            setAsset(prev => ({ ...prev, likes: updatedAsset.resultado.likes }));
         } catch (error) {
             console.error(error);
         }
@@ -191,5 +191,3 @@ const AssetView = () => {
 };
 
 export default AssetView;
-
-
