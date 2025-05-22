@@ -5,6 +5,8 @@ import "./style.css";
 import { getAssets } from "./services/apiService";
 import { getData } from "./services/apiService";
 import { useNavigate } from 'react-router-dom';
+import useTema from './useTema';
+
 
 const Contenedor = ({ titulo, assets }) => {
   const navigate = useNavigate();
@@ -20,10 +22,13 @@ const Contenedor = ({ titulo, assets }) => {
     setCurrentPage((prev) => (prev > 0 ? prev - 1 : prev));
   };
 
+
   const visibleAssets = assets.slice(
     currentPage * itemsPerPage,
     currentPage * itemsPerPage + itemsPerPage
   );
+
+  useTema();
 
   return (
     <div className="contenedor">

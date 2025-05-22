@@ -6,9 +6,13 @@ import { useNavigate } from 'react-router-dom';
 import { useContext } from "react";
 import LangContext from "./LangContext";
 import translations from "./translations";
+import useTema from './useTema';
+
 
 
 const Register = () => {
+
+    useTema();
     const navigate = useNavigate();
     const { lang } = useContext(LangContext);
     const t = translations[lang];

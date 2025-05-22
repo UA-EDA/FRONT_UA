@@ -3,6 +3,7 @@ import { useLocation } from 'react-router-dom';
 import { getData, postData } from './services/apiService';
 import Swal from 'sweetalert2';
 import './AssetView.css';
+import useTema from './useTema';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faThumbsUp as solidThumbsUp, faThumbsDown as solidThumbsDown } from '@fortawesome/free-solid-svg-icons';
@@ -17,6 +18,8 @@ function useQuery() {
 }
 
 const AssetView = () => {
+
+    useTema(); 
     const query = useQuery();
     const id = query.get("id");
 

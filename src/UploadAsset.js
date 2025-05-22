@@ -3,14 +3,19 @@ import React, { useState } from "react";
 import { postData } from './services/apiService';
 import Swal from 'sweetalert2';
 import { useNavigate } from 'react-router-dom';
+<<<<<<< HEAD
 import { useContext } from "react";
 import LangContext from "./LangContext";
 import translations from "./translations";
 
 
+=======
+import useTema from './useTema';
+>>>>>>> 0212ade (Modo oscuro, claro, tamaño grande, normal)
 
 
 const UploadAsset = () => {
+    useTema();
     const navigate = useNavigate();
     const [nombre, setNombre] = useState("");
     const [descripcion, setDescripcion] = useState("");

@@ -3,8 +3,11 @@ import React, { useEffect, useState } from 'react';
 import { getData } from './services/apiService';
 import './Categories.css';
 import { useNavigate } from 'react-router-dom';
+import useTema from './useTema';
 
 const Categories = () => {
+  useTema();
+  
   const [assets, setAssets] = useState([]);
   const [category, setCategory] = useState("3D");
   const navigate = useNavigate();
@@ -21,7 +24,7 @@ const Categories = () => {
       console.error("Error loading assets:", err);
     }
   };
-
+ 
   const availableCategories = ["3D", "2D", "AUDIO", "VIDEO", "SCRIPT", "IMAGE"];
 
   return (

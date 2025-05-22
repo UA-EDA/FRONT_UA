@@ -247,3 +247,71 @@
 .av-like-btn:hover {
     transform: scale(1.2);
 }
+
+
+/* === MODO CLARO === */
+.modo-claro .av-page {
+
+    color: #1a1a1a;
+}
+
+.modo-claro .av-main,
+.modo-claro .card,
+.modo-claro .av-details-card,
+.modo-claro .av-header-card {
+    background: #ffffff !important;
+    color: #1a1a1a;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+.modo-claro .av-description,
+.modo-claro .av-details-card li,
+.modo-claro .av-header-card h2,
+.modo-claro .av-header-card p,
+.modo-claro .av-tags,
+.modo-claro .tag,
+.modo-claro .cat {
+    color: #1a1a1a;
+}
+
+.modo-claro .tag,
+.modo-claro .cat {
+    background: #e0e0e0;
+}
+
+.modo-claro .av-license-card select {
+    background: #e0e0e0;
+    color: #000;
+}
+
+.modo-claro .dot {
+    background: rgba(0, 0, 0, 0.3);
+}
+
+.modo-claro .dot.active {
+    background: #00c853;
+}
+
+.modo-claro .av-3d-btn {
+    background: #00c853;
+    color: #ffffff;
+}
+
+.modo-claro .av-download-btn {
+    background-color: #388e3c;
+    color: white;
+}
+
+.modo-claro .av-download-btn:hover {
+    background-color: #2e7d32;
+}
+
+.modo-claro .av-like-btn {
+    background-color: #dcdcdc;
+    color: #1a1a1a;
+}
+
+.modo-claro .av-loading,
+.modo-claro .av-error {
+    color: #333;
+}
