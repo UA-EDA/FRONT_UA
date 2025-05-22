@@ -12,17 +12,19 @@ const NavBar = () => {
 
   let nombre = '';
 
-  useEffect(() => {
-    if (typeof window !== 'undefined') {
-      // El código que usa localStorage va aquí
-      // Ejemplo: localStorage.setItem('clave', 'valor');
-      if (localStorage.getItem('nombre') ) {
-        nombre = localStorage.getItem('nombre');
-        
+  if (typeof window !== 'undefined') {
+    // El código que usa localStorage va aquí
+    // Ejemplo: localStorage.setItem('clave', 'valor');
+    if (localStorage.getItem('nombre')) {
+      nombre = localStorage.getItem('nombre');
 
-        // Hacer algo con el valor en localStorage
-      }
+
+      // Hacer algo con el valor en localStorage
     }
+  }
+
+  useEffect(() => {
+
 
     getValidateToken('/auth/validate').then(x => {
       if (x.status === 200) {
