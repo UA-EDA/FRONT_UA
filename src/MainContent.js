@@ -94,7 +94,7 @@ const MainContent = () => {
       fetchAssets();
     }
 
-  });
+  }, [filtro]);
 
   return (
     <div>

@@ -9,7 +9,6 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faThumbsUp as solidThumbsUp, faThumbsDown as solidThumbsDown } from '@fortawesome/free-solid-svg-icons';
 import { faThumbsUp as regularThumbsUp, faThumbsDown as regularThumbsDown } from '@fortawesome/free-regular-svg-icons';
 
-import { useContext } from "react";
 import LangContext from "./LangContext";
 import translations from "./translations";
 
@@ -17,9 +16,29 @@ function useQuery() {
     return new URLSearchParams(useLocation().search);
 }
 
+const StarRatingInput = ({ rating, setRating }) => {
+    return (
+        <div style={{ display: 'flex', gap: '5px', justifyContent: 'center' }}>
+            {[1, 2, 3, 4, 5].map((star) => (
+                <span
+                    key={star}
+                    style={{ cursor: 'pointer', color: star <= rating ? '#FFD700' : '#ccc', fontSize: '24px' }}
+                    onClick={() => setRating(star)}
+                    role="button"
+                    tabIndex={0}
+                    onKeyDown={e => { if (e.key === 'Enter') setRating(star) }}
+                    aria-label={`Calificar con ${star} estrellas`}
+                >
+                    ★
+                </span>
+            ))}
+        </div>
+    );
+};
+
 const AssetView = () => {
 
-    useTema(); 
+    useTema();
     const query = useQuery();
     const id = query.get("id");
 
@@ -27,10 +46,19 @@ const AssetView = () => {
     const [loading, setLoading] = useState(true);
     const [userVote, setUserVote] = useState(null); // null, true (like), false (dislike)
 
-    const { lang } = useContext(LangContext);
+    // Comentarios
+    const [comentarios, setComentarios] = useState([]);
+    const [visibleComentarios, setVisibleComentarios] = useState(5);
+    const [nuevoComentario, setNuevoComentario] = useState("");
+    const [nuevaValoracion, setNuevaValoracion] = useState(0);
+    const [enviandoComentario, setEnviandoComentario] = useState(false);
+
+    const { lang } = React.useContext(LangContext);
     const t = translations[lang];
 
     useEffect(() => {
+        setLoading(true);
+
         getData(`asset/${id}`)
             .then(response => {
                 if (response && response.resultado) setAsset(response.resultado);
@@ -48,7 +76,7 @@ const AssetView = () => {
         getData(`asset/like?assetId=${id}`)
             .then(response => {
                 const voto = response.resultado;
-                if (voto != null) { // esto cubre undefined y null
+                if (voto != null) {
                     setUserVote(voto);
                 }
             })
@@ -58,43 +86,86 @@ const AssetView = () => {
                     title: 'Error al recuperar valoraciones',
                     text: err.message || 'No se han podido obtener los datos.'
                 });
-            })
-            .finally(() => setLoading(false));
+            });
+
+        // Cargar comentarios iniciales
+        loadComentarios();
 
     }, [id]);
 
+    const loadComentarios = async () => {
+        try {
+            const response = await getData(`asset/todos-comentarios/${id}`);
+            if (response && response.resultado) {
+                setComentarios(response.resultado);
+            } else {
+                setComentarios([]);
+            }
+        } catch (error) {
+            console.error(error);
+            Swal.fire('Error', 'No se pudieron cargar los comentarios', 'error');
+        }
+    };
+
+    const handleVerMasComentarios = () => {
+        setVisibleComentarios((prev) => Math.min(prev + 5, comentarios.length));
+    };
+
+    const handleEnviarComentario = async () => {
+        if (nuevoComentario.trim() === "") {
+            Swal.fire('Error', 'El comentario no puede estar vacío', 'error');
+            return;
+        }
+        if (nuevaValoracion < 1 || nuevaValoracion > 5) {
+            Swal.fire('Error', 'La valoración debe ser entre 1 y 5 estrellas', 'error');
+            return;
+        }
+
+        setEnviandoComentario(true);
+
+        try {
+            // POST /asset/comentario?assetId=X&commentId=X
+            // Si no tienes commentId, mandamos null o '' (depende backend)
+            await postData('/asset/comentario', {
+                assetId: id,
+                comentario: nuevoComentario,
+                valoracion: nuevaValoracion,
+            });
+
+            Swal.fire('Comentario enviado', '', 'success');
+            setNuevoComentario('');
+            setNuevaValoracion(0);
+
+            // Recargar comentarios después de enviar
+            await loadComentarios();
+            setVisibleComentarios(5);
+
+        } catch (error) {
+            console.error(error);
+            Swal.fire('Error', 'No se pudo enviar el comentario', 'error');
+        } finally {
+            setEnviandoComentario(false);
+        }
+    };
 
     if (loading) return <div className="av-loading">Cargando…</div>;
     if (!asset) return <div className="av-error">No se encontró el asset.</div>;
 
-    // Función para manejar la descarga
     const handleDownload = async () => {
         try {
-            // 1. Descarga el archivo como Blob
             const response = await fetch(asset.archivo);
             if (!response.ok) throw new Error(`HTTP ${response.status}`);
             const blob = await response.blob();
-
-            // 2. Crea una URL temporal para el Blob
             const url = window.URL.createObjectURL(blob);
-
-            // 3. Crea el enlace y dispara la descarga
             const link = document.createElement('a');
             link.href = url;
             link.download = asset.nombre || 'archivo';
             document.body.appendChild(link);
             link.click();
             link.remove();
-
-            // 4. Revoca la URL para liberar memoria
             window.URL.revokeObjectURL(url);
-
-            // 5. Incrementa el contador de descargas en la DB
             await postData('/asset/increment-download', { id });
-
-            // Opcional: actualizar localmente el contador en el estado
             setAsset(prev => ({ ...prev, num_descargas: (prev.num_descargas || 0) + 1 }));
-
         } catch (err) {
             Swal.fire({
                 icon: 'error',
@@ -175,7 +246,7 @@ const AssetView = () => {
                     </ul>
                 </div>
 
-                <li>
+                <li className="av-action-buttons">
                     <button className="av-like-btn" onClick={() => handleScore(true)}>
                         <FontAwesomeIcon
                             icon={userVote === false || userVote === undefined ? regularThumbsUp : solidThumbsUp}
@@ -189,14 +260,73 @@ const AssetView = () => {
                             color={userVote === false || userVote === undefined ? '#ff3b30' : '#888'}
                         />
                     </button>
+
+                    <div className="av-download-section">
+                        <button onClick={handleDownload} className="av-download-btn">
+                            {t.asset.download}
+                        </button>
+                    </div>
                 </li>
 
-                {/* Sección de Descarga en su propia sección abajo de los detalles */}
-                <div className="av-download-section">
-                    <button onClick={handleDownload} className="av-download-btn">
-                        {t.asset.download}
-                    </button>
-                </div>
+                {/* --- Sección de Comentarios --- */}
+                <section className="av-comments-section" aria-label="Comentarios del asset">
+                    <h3>{t.asset.comments}</h3>
+
+                    {/* Formulario para nuevo comentario */}
+                    <div className="av-new-comment">
+                        <textarea
+                            placeholder="Escribe tu comentario aquí..."
+                            value={nuevoComentario}
+                            onChange={e => setNuevoComentario(e.target.value)}
+                            rows={3}
+                            aria-label="Nuevo comentario"
+                            disabled={enviandoComentario}
+                        />
+                        <StarRatingInput rating={nuevaValoracion} setRating={setNuevaValoracion} />
+                        <button
+                            className="btn-send-comment"
+                            onClick={handleEnviarComentario}
+                            disabled={enviandoComentario}
+                            aria-label="Enviar comentario"
+                        >
+                            {enviandoComentario ? 'Enviando...' : 'Enviar comentario'}
+                        </button>
+                    </div>
+
+                    {/* Lista de comentarios */}
+                    <ul className="av-comments-list" aria-live="polite" aria-relevant="additions">
+                        {comentarios.length === 0 && <li>No hay comentarios aún.</li>}
+                        {comentarios.slice(0, visibleComentarios).map((comentario) => (
+                            <li key={comentario._id || comentario.id} className="av-comment-item">
+                                <div className="comment-header">
+                                    <div className="comment-meta">
+                                        <span className="comment-author">
+                                            {(comentario.autor && comentario.autor.nombre) ? comentario.autor.nombre : 'Anónimo'}
+                                        </span>
+                                        <span className="comment-date">
+                                            {new Date(comentario.createdAt).toLocaleDateString()}
+                                        </span>
+                                    </div>
+                                    <div className="comment-rating">
+                                        {"★".repeat(comentario.valoracion || 0)}
+                                        {"☆".repeat(5 - (comentario.valoracion || 0))}
+                                    </div>
+                                </div>
+                                <p className="comment-content">{comentario.comentario}</p>
+                            </li>
+                        ))}
+                    </ul>
+
+                    {visibleComentarios < comentarios.length && (
+                        <button
+                            onClick={handleVerMasComentarios}
+                            className="btn-load-more"
+                            aria-label="Ver más comentarios"
+                        >
+                            Ver más
+                        </button>
+                    )}
+                </section>
             </aside>
         </div>
     );
