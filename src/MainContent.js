@@ -9,7 +9,6 @@ import useTema from './useTema';
 
 
 const Contenedor = ({ titulo, assets }) => {
- 
   const navigate = useNavigate();
   const [currentPage, setCurrentPage] = useState(0);
   const itemsPerPage = 4;
