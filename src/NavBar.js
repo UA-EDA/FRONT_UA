@@ -61,7 +61,7 @@ const NavBar = () => {
         </div>
       </div>
   
-      <form onSubmit={(e) => { e.preventDefault(); navigate('/'); setMenuOpen(false); }}>
+      <form >
         <input
           name="filtro"
           type="text"
