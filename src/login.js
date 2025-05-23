@@ -37,6 +37,9 @@ const Login = () => {
       }
 
       navigate('/');
+          setTimeout(() => {
+      window.location.reload();
+    }, 100); // espera mínima para que React Router procese la navegación
 
     } catch (error) {
       console.log(error);
