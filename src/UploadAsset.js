@@ -134,7 +134,7 @@ const UploadAsset = () => {
                     </div>
                     <div className="mb-3">
                         <label className="form-label text-white">{t.upload.category}</label>
-                        <select>
+                        <select class="form-control">
                             <option value="" disabled hidden>{t.upload.select_category}</option>
                             <option value="3D">3D</option>
                             <option value="2D">2D</option>
