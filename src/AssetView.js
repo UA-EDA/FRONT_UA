@@ -79,11 +79,11 @@ const AssetView = () => {
                 else throw new Error('Respuesta inválida');
             })
             .catch(err => {
-                Swal.fire({
+                /*Swal.fire({
                     icon: 'error',
                     title: 'Error al cargar el asset',
                     text: err.message || 'No se han podido obtener los datos.'
-                });
+                });*/
             })
             .finally(() => setLoading(false));
 
@@ -95,11 +95,11 @@ const AssetView = () => {
                 }
             })
             .catch(err => {
-                Swal.fire({
+                /*Swal.fire({
                     icon: 'error',
                     title: 'Error al recuperar valoraciones',
                     text: err.message || 'No se han podido obtener los datos.'
-                });
+                });*/
             });
 
         loadComentarios();
