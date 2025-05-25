@@ -18,6 +18,7 @@ const UserDashboard = () => {
 
   const navigate = useNavigate();
   const [misAssets, setMisAssets] = useState([]);
+  const [assetsDescargados, setAssetsDescargados] = useState([]);
 
   const [nombreEditado, setNombreEditado] = useState('');
   const [emailEditado, setEmailEditado] = useState('');
@@ -46,6 +47,29 @@ const UserDashboard = () => {
       }
     }
     fetchUserInfo();
+
+    async function fetchDescargadosYFiltrar() {
+      try {
+        const listaResponse = await getData('/auth/dowload-list');
+        const downloadedObj = listaResponse.resultado.downloaded_assets || {};
+        const downloadedIds = Object.keys(downloadedObj); // 🔑 Convierte a array
+
+        const assetsResponse = await getData('/asset/misAssets');
+        const todosLosAssets = assetsResponse.resultado || [];
+
+        const descargados = todosLosAssets.filter(asset => downloadedIds.includes(asset._id));
+        setAssetsDescargados(descargados);
+      } catch (err) {
+        console.error('Error cargando assets descargados:', err);
+        Swal.fire({
+          icon: 'error',
+          title: 'Error al recuperar los assets descargados',
+          text: err.message || 'No se han podido obtener los datos.'
+        });
+      }
+    }
+
+    fetchDescargadosYFiltrar();
 
     console.log('Fetching misAssets...');
     getData('/asset/misAssets')
@@ -338,7 +362,7 @@ const UserDashboard = () => {
                       />
                       <h3 style={{ margin: '0 0 5px 0' }}>{asset.nombre}</h3>
                     </div>
-                    <p style={{ margin: '0 0 10px 0', color: '#666' }}>{asset.likes || 0} likes</p>
+                    <p style={{ margin: '0 0 10px 0', color: '#999' }}>{asset.likes || 0} likes</p>
                     <button
                       className="opcion-btn"
                       onClick={() => handleEditarAsset(asset._id)}
@@ -360,13 +384,12 @@ const UserDashboard = () => {
             )}
           </div>
         );
-
       case 'descargas':
         return (
           <div className="descargas-section">
             <h2>{t.dashboard.downloads}</h2>
             {misAssets.length === 0 ? (
-              <p>No tienes assets.</p>
+              <p>No tienes assets descargados.</p>
             ) : (
               <ul style={{
                 display: 'grid',
@@ -376,7 +399,7 @@ const UserDashboard = () => {
                 padding: 0,
                 margin: 0,
               }}>
-                {misAssets.map((asset) => (
+                {assetsDescargados.map((asset) => (
                   <li
                     key={asset._id}
                     style={{
@@ -410,6 +433,7 @@ const UserDashboard = () => {
                       />
                       <h3 style={{ margin: '0 0 5px 0' }}>{asset.nombre}</h3>
                     </div>
+                    <p style={{ margin: '0 0 10px 0', color: '#999' }}>Por {asset.autor?.nombre_completo ?? "Autor desconocido"}</p>
                     <button
                       className="opcion-btn"
                       onClick={() => handleDescargarAsset(asset._id)}
