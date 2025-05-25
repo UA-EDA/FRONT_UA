@@ -54,7 +54,7 @@ const UserDashboard = () => {
         const downloadedObj = listaResponse.resultado.downloaded_assets || {};
         const downloadedIds = Object.keys(downloadedObj); // 🔑 Convierte a array
 
-        const assetsResponse = await getData('/asset/misAssets');
+        const assetsResponse = await getData('/asset/todos-assets');
         const todosLosAssets = assetsResponse.resultado || [];
 
         const descargados = todosLosAssets.filter(asset => downloadedIds.includes(asset._id));
