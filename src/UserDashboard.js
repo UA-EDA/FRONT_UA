@@ -50,7 +50,7 @@ const UserDashboard = () => {
 
     async function fetchDescargadosYFiltrar() {
       try {
-        const listaResponse = await getData('/auth/dowload-list');
+        const listaResponse = await getData('/auth/download-list');
         const downloadedObj = listaResponse.resultado.downloaded_assets || {};
         const downloadedIds = Object.keys(downloadedObj); // 🔑 Convierte a array
 
