@@ -88,7 +88,7 @@ const EditAsset = () => {
             }
             await putData(`/asset/edit/${id}`, data);
             Swal.fire('Éxito', 'Asset actualizado correctamente', 'success');
-            //navigate('/');
+            navigate('/');
         } catch (error) {
             console.error(error);
             Swal.fire('Error', error.response?.data?.error || 'No se pudo actualizar el asset', 'error');
