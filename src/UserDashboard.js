@@ -89,6 +89,41 @@ const UserDashboard = () => {
     }
   };
 
+  const handleEditarAsset = async (id) => {
+    try {
+      navigate(`/asset-edit?id=${id}`);
+    } catch (error) {
+      Swal.fire({
+        icon: 'error',
+        title: 'Error editando asset',
+        text: error.message || 'No se pudo editar el asset'
+      });
+    }
+  };
+
+  const handleDescargarAsset = async (id) => {
+    try {
+      const assetData = await getData(`/asset/${id}`)
+      const asset = assetData.resultado;
+      const response = await fetch(asset.archivo);
+      if (!response.ok) throw new Error(`HTTP ${response.status}`);
+      const blob = await response.blob();
+      const url = window.URL.createObjectURL(blob);
+      const link = document.createElement('a');
+      link.href = url;
+      link.download = asset.nombre || 'archivo';
+      document.body.appendChild(link);
+      link.click();
+      link.remove();
+      window.URL.revokeObjectURL(url);
+    } catch (err) {
+      Swal.fire({
+        icon: 'error',
+        title: 'Error descargando el asset',
+        text: err.message || 'No se pudo completar la descarga.'
+      });
+    }
+  };
 
   const handleEliminarAsset = async (id) => {
     if (!window.confirm('¿Seguro que quieres eliminar este asset?')) return;
@@ -306,6 +341,14 @@ const UserDashboard = () => {
                     <p style={{ margin: '0 0 10px 0', color: '#666' }}>{asset.likes || 0} likes</p>
                     <button
                       className="opcion-btn"
+                      onClick={() => handleEditarAsset(asset._id)}
+                      style={{ alignSelf: 'stretch' }}
+
+                    >
+                      Editar
+                    </button>
+                    <button
+                      className="opcion-btn"
                       onClick={() => handleEliminarAsset(asset._id)}
                       style={{ alignSelf: 'stretch' }}
                     >
@@ -319,7 +362,68 @@ const UserDashboard = () => {
         );
 
       case 'descargas':
-        return <div className="descargas-section"><h2>{t.dashboard.downloads}</h2></div>;
+        return (
+          <div className="descargas-section">
+            <h2>{t.dashboard.downloads}</h2>
+            {misAssets.length === 0 ? (
+              <p>No tienes assets.</p>
+            ) : (
+              <ul style={{
+                display: 'grid',
+                gridTemplateColumns: 'repeat(3, 1fr)',
+                gap: '20px',
+                listStyle: 'none',
+                padding: 0,
+                margin: 0,
+              }}>
+                {misAssets.map((asset) => (
+                  <li
+                    key={asset._id}
+                    style={{
+                      border: '1px solid #ccc',
+                      borderRadius: '8px',
+                      padding: '10px',
+                      display: 'flex',
+                      flexDirection: 'column',
+                      alignItems: 'center',
+                      textAlign: 'center',
+                      cursor: 'default',
+                    }}
+                  >
+                    <div
+                      onClick={() => navigate(`/asset-view?id=${asset._id}`)}
+                      style={{ cursor: 'pointer', width: '100%' }}
+                      role="link"
+                      tabIndex={0}
+                      onKeyPress={(e) => { if (e.key === 'Enter') navigate(`/asset-view?${asset._id}`) }}
+                    >
+                      <img
+                        src={asset.portada}
+                        alt={`Portada de ${asset.nombre}`}
+                        style={{
+                          width: '100%',
+                          height: '150px',
+                          objectFit: 'cover',
+                          borderRadius: '6px',
+                          marginBottom: '10px',
+                        }}
+                      />
+                      <h3 style={{ margin: '0 0 5px 0' }}>{asset.nombre}</h3>
+                    </div>
+                    <button
+                      className="opcion-btn"
+                      onClick={() => handleDescargarAsset(asset._id)}
+                      style={{ alignSelf: 'stretch' }}
+
+                    >
+                      Descargar
+                    </button>
+                  </li>
+                ))}
+              </ul>
+            )}
+          </div>
+        );
       case 'configuracion':
         return (
           <div className="configuracion-section">

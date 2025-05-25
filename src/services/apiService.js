@@ -58,6 +58,15 @@ export const postData = async (endpoint, data) => {
     throw error;
   }
 };
+export const putData = async (endpoint, data) => {
+  try {
+    const response = await api.put(endpoint, data);
+    return response.data;
+  } catch (error) {
+    console.error("Error al actualizar datos:", error);
+    throw error;
+  }
+};
 
 export const uploadAsset = async (endpoint, data) => {
   try {

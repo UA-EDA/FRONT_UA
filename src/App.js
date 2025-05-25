@@ -10,6 +10,7 @@ import AssetView from "./AssetView";
 import MainContent from "./MainContent";
 import Layout from "./Layout"; // El layout con navbar y footer
 import UserDashboard from "./UserDashboard";
+import EditAsset from "./EditAsset";
 
 function App() {
 
@@ -26,6 +27,7 @@ function App() {
                 <Route element={<AuthGuard />}>
                     <Route path="/asset/upload" element={<Layout><AssetUpload /></Layout>} />
                     <Route path="/asset-view" element={<Layout><AssetView /></Layout>} />
+                    <Route path="/asset-edit" element={<Layout><EditAsset /></Layout>} />
                 </Route>
                 <Route path="/auth/register" element={<Register />} />
                 <Route path="/dashboard-usuario" element={<Layout><UserDashboard /></Layout>} />
